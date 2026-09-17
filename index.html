@@ -6,24 +6,25 @@
   <title>臺大醫院 PGY 24M 呼吸治療師解鎖集點卡</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 12px; }
     
-    .action-bar { margin-bottom: 20px; display: flex; gap: 12px; }
+    .action-bar { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
     .btn { background: #0056b3; color: white; border: none; padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
     .btn:hover { background: #003d80; }
     .btn-reset { background: #ff4d4f; }
     .btn-reset:hover { background: #cf1322; }
 
-    #capture-card { width: 1200px; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    /* 卡片容器：電腦版 1200px，手機版 100% 寬度 */
+    #capture-card { width: 1200px; max-width: 100%; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
     
-    .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .header-title h1 { color: #0056b3; font-size: 26px; font-weight: 800; }
-    .header-title p { color: #666; font-size: 14px; margin-top: 4px; }
+    .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+    .header-title h1 { color: #0056b3; font-size: 24px; font-weight: 800; }
+    .header-title p { color: #666; font-size: 13px; margin-top: 4px; }
     .source-tag { background: #e6f7ff; border: 1px solid #91d5ff; color: #0056b3; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 6px; }
 
     /* 進度條樣式 */
     .progress-container { background: #fafafa; border: 1px solid #d9d9d9; padding: 16px; border-radius: 8px; margin-bottom: 24px; }
-    .progress-title { font-weight: bold; color: #333; margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .progress-title { font-weight: bold; color: #333; margin-bottom: 8px; display: flex; justify-content: space-between; font-size: 14px; }
     .progress-bar-bg { background: #e8e8e8; height: 16px; border-radius: 8px; overflow: hidden; }
     .progress-bar-fill { background: linear-gradient(90deg, #1890ff, #52c41a); height: 100%; width: 0%; transition: width 0.3s ease; }
 
@@ -55,9 +56,9 @@
     .stamp-badge { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold; background: #f5f5f5; color: #8c8c8c; border: 1px solid #d9d9d9; }
     .stamp-item.completed .stamp-badge { background: #52c41a; color: #ffffff; border: 1px solid #389e0d; }
 
-    /* 多按鈕組合樣式 (EPA 與 常態管考按鈕共用) */
+    /* 多按鈕組合樣式 */
     .multi-btn-item { display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #d9d9d9; border-radius: 6px; padding: 6px 10px; }
-    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 60%; }
+    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 65%; }
     .sub-btn { font-size: 11px; font-weight: bold; padding: 3px 6px; border-radius: 4px; background: #f5f5f5; color: #555; border: 1px solid #d9d9d9; cursor: pointer; user-select: none; transition: all 0.2s; }
     .sub-btn:hover { background: #e6f7ff; border-color: #40a9ff; color: #1890ff; }
     .sub-btn.completed { background: #52c41a; color: #ffffff; border-color: #389e0d; }
@@ -68,6 +69,16 @@
     .recurrent-item { background: #ffffff; padding: 10px 14px; border-radius: 6px; border: 1px solid #d9f7be; }
     
     .footer-note { text-align: right; font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 10px; margin-top: 16px; }
+
+    /* 📱 關鍵：手機與平板視角 (RWD) 自動切換為直排單欄 */
+    @media (max-width: 992px) {
+      body { padding: 8px; }
+      #capture-card { padding: 16px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .recurrent-grid { grid-template-columns: 1fr; }
+      .btn-group { max-width: 100%; margin-top: 4px; }
+      .multi-btn-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -90,7 +101,7 @@
     <!-- 總集點進度條 -->
     <div class="progress-container">
       <div class="progress-title">
-        <span>🏆 PGY 核心技能點數達成率 (EPA & 課程與技術考)</span>
+        <span>🏆 PGY 核心技能點數達成率</span>
         <span id="progress-text">0 / 0 點 (0%)</span>
       </div>
       <div class="progress-bar-bg">
@@ -108,21 +119,21 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔷 基礎課程項目 (完成解鎖)[cite: 1]</div>
+          <div class="section-box-title">🔷 基礎課程項目 (完成解鎖)</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c1"><span class="stamp-text">基本氧氣治療與溼氣噴霧治療[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c2"><span class="stamp-text">低血氧/高二氧化碳/ABG[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c3"><span class="stamp-text">Auto-PEEP及處置[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c4"><span class="stamp-text">身體評估[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c5"><span class="stamp-text">呼吸照護登入系統 (VPN)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c1"><span class="stamp-text">基本氧氣治療與溼氣噴霧治療</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c2"><span class="stamp-text">低血氧/高二氧化碳/ABG</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c3"><span class="stamp-text">Auto-PEEP及處置</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c4"><span class="stamp-text">身體評估</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c5"><span class="stamp-text">呼吸照護登入系統 (VPN)</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 1 藥物吸入照護[cite: 1]</span>
+              <span class="stamp-text">EPA 1 藥物吸入照護</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa1_1">1-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa1_2">1-2</span>
@@ -130,7 +141,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 5 氧氣治療照護[cite: 1]</span>
+              <span class="stamp-text">EPA 5 氧氣治療照護</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa5_1">5-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa5_2">5-2</span>
@@ -138,7 +149,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 6 侵襲呼吸器初始設定[cite: 1]</span>
+              <span class="stamp-text">EPA 6 侵襲呼吸器初始設定</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa6_1">6-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa6_2">6-2</span>
@@ -149,14 +160,14 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考點數 (合格解鎖)[cite: 1]</div>
+          <div class="section-box-title">🔴 技術考點數 (合格解鎖)</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech1"><span class="stamp-text">侵襲/非侵襲管路設定[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech2"><span class="stamp-text">呼吸管路更換作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech3"><span class="stamp-text">肺部功能測量作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech4"><span class="stamp-text">氣管內管氣囊漏氣測試[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech5"><span class="stamp-text">呼吸評估測量作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech6"><span class="stamp-text">小量噴霧器作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech1"><span class="stamp-text">侵襲/非侵襲管路設定</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech2"><span class="stamp-text">呼吸管路更換作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech3"><span class="stamp-text">肺部功能測量作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech4"><span class="stamp-text">氣管內管氣囊漏氣測試</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech5"><span class="stamp-text">呼吸評估測量作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech6"><span class="stamp-text">小量噴霧器作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
@@ -198,21 +209,21 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔷 專業課程項目 (完成解鎖)[cite: 1]</div>
+          <div class="section-box-title">🔷 專業課程項目 (完成解鎖)</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c1"><span class="stamp-text">臨床成人呼吸生理學[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c2"><span class="stamp-text">胸腔常見疾病介紹[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c3"><span class="stamp-text">小兒氣道照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c4"><span class="stamp-text">呼吸器分類/操作/脫離(含ATC)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c5"><span class="stamp-text">健保相關事宜[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c1"><span class="stamp-text">臨床成人呼吸生理學</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c2"><span class="stamp-text">胸腔常見疾病介紹</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c3"><span class="stamp-text">小兒氣道照護</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c4"><span class="stamp-text">呼吸器分類/操作/脫離(含ATC)</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c5"><span class="stamp-text">健保相關事宜</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 3 胸腹手術肺擴張[cite: 1]</span>
+              <span class="stamp-text">EPA 3 胸腹手術肺擴張</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa3_1">3-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa3_2">3-2</span>
@@ -220,7 +231,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 8 呼吸器緊急處置[cite: 1]</span>
+              <span class="stamp-text">EPA 8 呼吸器緊急處置</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa8_1">8-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa8_2">8-2</span>
@@ -228,7 +239,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 9 呼吸器病人轉送[cite: 1]</span>
+              <span class="stamp-text">EPA 9 呼吸器病人轉送</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa9_1">9-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa9_2">9-2</span>
@@ -236,7 +247,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 10 侵襲呼吸器脫離[cite: 1]</span>
+              <span class="stamp-text">EPA 10 侵襲呼吸器脫離</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa10_1">10-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa10_2">10-2</span>
@@ -244,7 +255,7 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 11 移除氣管內管[cite: 1]</span>
+              <span class="stamp-text">EPA 11 移除氣管內管</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa11_1">11-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa11_2">11-2</span>
@@ -255,12 +266,12 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考與報告點數[cite: 1]</div>
+          <div class="section-box-title">🔴 技術考與報告點數</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech7"><span class="stamp-text">俯臥作業流程[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech8"><span class="stamp-text">高頻呼吸器 (HFOV) 作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech9"><span class="stamp-text">一氧化氮 (iNO) 吸入作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech10"><span class="stamp-text">肺部擴充術作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech7"><span class="stamp-text">俯臥作業流程</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech8"><span class="stamp-text">高頻呼吸器 (HFOV) 作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech9"><span class="stamp-text">一氧化氮 (iNO) 吸入作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech10"><span class="stamp-text">肺部擴充術作業</span><span class="stamp-badge">🔒 未解鎖</span></div>
             <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_case"><span class="stamp-text">個案報告 1 篇</span><span class="stamp-badge">🔒 未解鎖</span></div>
             <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_journal"><span class="stamp-text">期刊報告 1 篇</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
@@ -316,25 +327,25 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔷 第二年專業重症課程 (完成解鎖)[cite: 1]</div>
+          <div class="section-box-title">🔷 第二年專業重症課程 (完成解鎖)</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c1"><span class="stamp-text">手術前後呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c2"><span class="stamp-text">COPD 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c3"><span class="stamp-text">ARDS 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c4"><span class="stamp-text">VAP 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c5"><span class="stamp-text">呼吸功能改善[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c6"><span class="stamp-text">HFOV 臨床應用[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c7"><span class="stamp-text">iNO 臨床應用[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c8"><span class="stamp-text">Prone Position Ventilation[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c9"><span class="stamp-text">Lung Recruitment Management[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c1"><span class="stamp-text">手術前後呼吸照護</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c2"><span class="stamp-text">COPD 呼吸照護</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c3"><span class="stamp-text">ARDS 呼吸照護</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c4"><span class="stamp-text">VAP 呼吸照護</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c5"><span class="stamp-text">呼吸功能改善</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c6"><span class="stamp-text">HFOV 臨床應用</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c7"><span class="stamp-text">iNO 臨床應用</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c8"><span class="stamp-text">Prone Position Ventilation</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c9"><span class="stamp-text">Lung Recruitment Management</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
-              <span class="stamp-text">EPA 7 呼吸窘迫處置[cite: 1]</span>
+              <span class="stamp-text">EPA 7 呼吸窘迫處置</span>
               <div class="btn-group">
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa7_1">7-1</span>
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="epa7_2">7-2</span>
@@ -345,9 +356,9 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考與總驗收點數[cite: 1]</div>
+          <div class="section-box-title">🔴 技術考與總驗收點數</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech11"><span class="stamp-text">13-24M 技術評核總驗收[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech11"><span class="stamp-text">13-24M 技術評核總驗收</span><span class="stamp-badge">🔒 未解鎖</span></div>
             <div class="stamp-item" onclick="toggleStamp(this)" data-id="report1"><span class="stamp-text">個案報告 1 篇 (≥ 80分)</span><span class="stamp-badge">🔒 未解鎖</span></div>
             <div class="stamp-item" onclick="toggleStamp(this)" data-id="report2"><span class="stamp-text">文獻實證專題報告 (≥ 80分)</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
