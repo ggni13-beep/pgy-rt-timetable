@@ -84,8 +84,8 @@
     <!-- 總集點進度條 -->
     <div class="progress-container">
       <div class="progress-title">
-        <span>🏆 PGY 核心技能點數達成率 (EPA & 技術考)</span>
-        <span id="progress-text">0 / 22 點 (0%)</span>
+        <span>🏆 PGY 核心技能點數達成率 (EPA & 課程與技術考)</span>
+        <span id="progress-text">0 / 0 點 (0%)</span>
       </div>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progress-bar"></div>
@@ -97,55 +97,55 @@
       <div class="stage-card stage-1">
         <div class="stage-title">階段一：基礎課程 <span class="badge">M1 - M3</span></div>
         <div class="meta-info">
-          <strong>核心目標：</strong>基礎技能、兒科訓練、值班準備<br>
-          <strong>照護人數：</strong>M1(4-6人) → M2(6-8人) → M3(8-10人)
+          <strong>核心目標：</strong>基礎技能、兒科訓練、值班準備[cite: 2]<br>
+          <strong>照護人數：</strong>M1(4-6人) → M2(6-8人) → M3(8-10人)[cite: 2]
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (Level 4 獨立執行)</div>
+          <div class="section-box-title">🔷 基礎課程項目 (完成解鎖)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa1">
-              <span class="stamp-text">EPA 1 藥物吸入照護</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa5">
-              <span class="stamp-text">EPA 5 氧氣治療照護</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa6">
-              <span class="stamp-text">EPA 6 侵襲呼吸器初始設定</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c1"><span class="stamp-text">基本氧氣治療與溼氣噴霧治療[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c2"><span class="stamp-text">低血氧/高二氧化碳/ABG[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c3"><span class="stamp-text">Auto-PEEP及處置[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c4"><span class="stamp-text">身體評估[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="base_c5"><span class="stamp-text">呼吸照護登入系統 (VPN)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考點數 (合格解鎖)</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech1">
-              <span class="stamp-text">侵襲/非侵襲管路設定</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech2">
-              <span class="stamp-text">呼吸管路更換作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech3">
-              <span class="stamp-text">肺部功能測量作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech4">
-              <span class="stamp-text">氣管內管氣囊漏氣測試</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech5">
-              <span class="stamp-text">呼吸評估測量作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech6">
-              <span class="stamp-text">小量噴霧器作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa1_1"><span class="stamp-text">EPA 1-1 藥物吸入照護 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa1_2"><span class="stamp-text">EPA 1-2 藥物吸入照護 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa1_3"><span class="stamp-text">EPA 1-3 藥物吸入照護 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa5_1"><span class="stamp-text">EPA 5-1 氧氣治療照護 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa5_2"><span class="stamp-text">EPA 5-2 氧氣治療照護 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa5_3"><span class="stamp-text">EPA 5-3 氧氣治療照護 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa6_1"><span class="stamp-text">EPA 6-1 侵襲呼吸器初始設定 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa6_2"><span class="stamp-text">EPA 6-2 侵襲呼吸器初始設定 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa6_3"><span class="stamp-text">EPA 6-3 侵襲呼吸器初始設定 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考點數 (合格解鎖)[cite: 1]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech1"><span class="stamp-text">侵襲/非侵襲管路設定[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech2"><span class="stamp-text">呼吸管路更換作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech3"><span class="stamp-text">肺部功能測量作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech4"><span class="stamp-text">氣管內管氣囊漏氣測試[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech5"><span class="stamp-text">呼吸評估測量作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech6"><span class="stamp-text">小量噴霧器作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">📌 階段一常態管考點數[cite: 2]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s1_m1"><span class="stamp-text">M1 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s1_m2"><span class="stamp-text">M2 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s1_m3"><span class="stamp-text">M3 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s1_ccc3"><span class="stamp-text">CCC 臨床能力委員會討論會 (M3)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
       </div>
@@ -154,63 +154,67 @@
       <div class="stage-card stage-2">
         <div class="stage-title">階段二：核心課程 <span class="badge">M4 - M12</span></div>
         <div class="meta-info">
-          <strong>核心目標：</strong>進階重症技能、臨床獨立照護<br>
-          <strong>照護人數：</strong>專責單位獨立照顧 (10-12人)
+          <strong>核心目標：</strong>進階重症技能、臨床獨立照護[cite: 2]<br>
+          <strong>照護人數：</strong>專責單位獨立照顧 (10-12人)[cite: 2]
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (Level 4 獨立執行)</div>
+          <div class="section-box-title">🔷 專業課程項目 (完成解鎖)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa3">
-              <span class="stamp-text">EPA 3 胸腹手術肺擴張</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa8">
-              <span class="stamp-text">EPA 8 呼吸器緊急處置</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa9">
-              <span class="stamp-text">EPA 9 呼吸器病人轉送</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa10">
-              <span class="stamp-text">EPA 10 侵襲呼吸器脫離</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa11">
-              <span class="stamp-text">EPA 11 移除氣管內管</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c1"><span class="stamp-text">臨床成人呼吸生理學[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c2"><span class="stamp-text">胸腔常見疾病介紹[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c3"><span class="stamp-text">小兒氣道照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c4"><span class="stamp-text">呼吸器分類/操作/脫離(含ATC)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="adv_c5"><span class="stamp-text">健保相關事宜[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考點數 (合格解鎖)</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech7">
-              <span class="stamp-text">俯臥作業流程</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech8">
-              <span class="stamp-text">高頻呼吸器 (HFOV) 作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech9">
-              <span class="stamp-text">一氧化氮 (iNO) 吸入作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech10">
-              <span class="stamp-text">肺部擴充術作業</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_case">
-              <span class="stamp-text">個案報告 1 篇</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_journal">
-              <span class="stamp-text">期刊報告 1 篇</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa3_1"><span class="stamp-text">EPA 3-1 胸腹手術肺擴張 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa3_2"><span class="stamp-text">EPA 3-2 胸腹手術肺擴張 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa3_3"><span class="stamp-text">EPA 3-3 胸腹手術肺擴張 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa8_1"><span class="stamp-text">EPA 8-1 呼吸器緊急處置 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa8_2"><span class="stamp-text">EPA 8-2 呼吸器緊急處置 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa8_3"><span class="stamp-text">EPA 8-3 呼吸器緊急處置 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa9_1"><span class="stamp-text">EPA 9-1 呼吸器病人轉送 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa9_2"><span class="stamp-text">EPA 9-2 呼吸器病人轉送 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa9_3"><span class="stamp-text">EPA 9-3 呼吸器病人轉送 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa10_1"><span class="stamp-text">EPA 10-1 侵襲呼吸器脫離 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa10_2"><span class="stamp-text">EPA 10-2 侵襲呼吸器脫離 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa10_3"><span class="stamp-text">EPA 10-3 侵襲呼吸器脫離 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa11_1"><span class="stamp-text">EPA 11-1 移除氣管內管 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa11_2"><span class="stamp-text">EPA 11-2 移除氣管內管 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa11_3"><span class="stamp-text">EPA 11-3 移除氣管內管 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考與報告點數[cite: 1, 2]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech7"><span class="stamp-text">俯臥作業流程[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech8"><span class="stamp-text">高頻呼吸器 (HFOV) 作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech9"><span class="stamp-text">一氧化氮 (iNO) 吸入作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech10"><span class="stamp-text">肺部擴充術作業[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_case"><span class="stamp-text">個案報告 1 篇[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report_journal"><span class="stamp-text">期刊報告 1 篇[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">📌 階段二常態管考點數[cite: 2]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m4"><span class="stamp-text">M4 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m5"><span class="stamp-text">M5 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m6"><span class="stamp-text">M6 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m7"><span class="stamp-text">M7 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m8"><span class="stamp-text">M8 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m9"><span class="stamp-text">M9 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m10"><span class="stamp-text">M10 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m11"><span class="stamp-text">M11 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_m12"><span class="stamp-text">M12 導師輔導訪談 & 教學滿意度[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_ccc9"><span class="stamp-text">CCC 臨床能力委員會討論會 (M9)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
       </div>
@@ -219,35 +223,49 @@
       <div class="stage-card stage-3">
         <div class="stage-title">階段三：專業課程 <span class="badge">M13 - M24</span></div>
         <div class="meta-info">
-          <strong>核心目標：</strong>兒科重症、高階重症勝任<br>
-          <strong>照護人數：</strong>成人重症(12-15人)、兒科/病房(≥15人)
+          <strong>核心目標：</strong>兒科重症、高階重症勝任[cite: 2]<br>
+          <strong>照護人數：</strong>成人重症(12-15人)、兒科/病房(≥15人)[cite: 2]
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔶 EPA 點數 (Level 4 獨立執行)</div>
+          <div class="section-box-title">🔷 第二年專業重症課程 (完成解鎖)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa7">
-              <span class="stamp-text">EPA 7 呼吸窘迫處置</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c1"><span class="stamp-text">手術前後呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c2"><span class="stamp-text">COPD 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c3"><span class="stamp-text">ARDS 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c4"><span class="stamp-text">VAP 呼吸照護[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c5"><span class="stamp-text">呼吸功能改善[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c6"><span class="stamp-text">HFOV 臨床應用[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c7"><span class="stamp-text">iNO 臨床應用[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c8"><span class="stamp-text">Prone Position Ventilation[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="y2_c9"><span class="stamp-text">Lung Recruitment Management[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考點數與總驗收</div>
+          <div class="section-box-title">🔶 EPA 點數 (可重複評核至 Level 4)[cite: 1]</div>
           <div class="stamp-list">
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech11">
-              <span class="stamp-text">13-24M 技術評核總驗收</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report1">
-              <span class="stamp-text">個案報告 1 篇 (≥ 80分)</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report2">
-              <span class="stamp-text">文獻實證專題報告 (≥ 80分)</span>
-              <span class="stamp-badge">🔒 未解鎖</span>
-            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa7_1"><span class="stamp-text">EPA 7-1 呼吸窘迫處置 (第一次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa7_2"><span class="stamp-text">EPA 7-2 呼吸窘迫處置 (第二次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="epa7_3"><span class="stamp-text">EPA 7-3 呼吸窘迫處置 (第三次)[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考與總驗收點數[cite: 1, 2]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="tech11"><span class="stamp-text">13-24M 技術評核總驗收[cite: 1]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report1"><span class="stamp-text">個案報告 1 篇 (≥ 80分)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="report2"><span class="stamp-text">文獻實證專題報告 (≥ 80分)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">📌 階段三常態管考點數[cite: 2]</div>
+          <div class="stamp-list">
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s3_m13_24"><span class="stamp-text">M13 - M24 導師輔導訪談 & 教學滿意度 (每月按時完成)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s3_ccc15"><span class="stamp-text">CCC 臨床能力委員會討論會 (M15)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s3_ccc21"><span class="stamp-text">CCC 臨床能力委員會討論會 (M21)[cite: 2]</span><span class="stamp-badge">🔒 未解鎖</span></div>
           </div>
         </div>
       </div>
@@ -255,31 +273,31 @@
 
     <!-- 週期性管考 -->
     <div class="recurrent-section">
-      <div class="recurrent-title">🟢 週期性常態管考 (Recurrent Trackers - 貫穿 24M)</div>
+      <div class="recurrent-title">🟢 週期性常態管考 (Recurrent Trackers - 貫穿 24M)[cite: 2]</div>
       <div class="recurrent-grid">
         <div class="recurrent-item">
           <strong>📌 每月 (Monthly)</strong><br>
-          • 導師生活輔導訪談 1 次<br>
-          • 教學部線上滿意度調查
+          • 導師生活輔導訪談 1 次[cite: 2]<br>
+          • 教學部線上滿意度調查[cite: 2]
         </div>
         <div class="recurrent-item">
           <strong>📌 每 3 個月 (Quarterly)</strong><br>
-          • Mini-CEX 評量 1 次 / CbD 病例討論 1 次<br>
-          • IPD 跨領域討論 1 次 / SIRIPPP 核心能力自評
+          • Mini-CEX 評量 1 次 / CbD 病例討論 1 次[cite: 2]<br>
+          • IPD 跨領域討論 1 次 / SIRIPPP 核心能力自評[cite: 2]
         </div>
         <div class="recurrent-item">
           <strong>📌 階段性 / 半年</strong><br>
-          • CCC 臨床能力委員會討論會 (M3 第一次召開，之後每半年一次)
+          • CCC 臨床能力委員會討論會 (M3 第一次召開，之後每半年一次)[cite: 2]
         </div>
         <div class="recurrent-item">
           <strong>📌 人文素養與全人照護 (TMS / 學會 / 公會 / 醫策會課程與時數採計)</strong><br>
-          • 第一年 ≥ 12h / 第二年 ≥ 6h (含人安、倫理、感染管制、高齡等)
+          • 第一年 ≥ 12h / 第二年 ≥ 6h (含人安、倫理、感染管制、高齡等)[cite: 2]
         </div>
       </div>
     </div>
 
     <div class="footer-note">
-      * 本圖表內容依據「國立臺灣大學醫學院附設醫院 二年期呼吸治療師訓練計畫 (114年修訂版)」規範製作。
+      * 本圖表內容依據「國立臺灣大學醫學院附設醫院 二年期呼吸治療師訓練計畫 (114年修訂版)」規範製作[cite: 2]。
     </div>
 
   </div>
@@ -306,7 +324,7 @@
     function updateProgressBar() {
       const totalItems = document.querySelectorAll('.stamp-item').length;
       const completedItems = document.querySelectorAll('.stamp-item.completed').length;
-      const percentage = Math.round((completedItems / totalItems) * 100);
+      const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
 
       const progressBar = document.getElementById('progress-bar');
       const progressText = document.getElementById('progress-text');
