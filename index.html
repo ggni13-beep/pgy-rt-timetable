@@ -2,64 +2,93 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>臺大醫院 PGY 24M 呼吸治療師訓練 Time Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>臺大醫院 PGY 24M 呼吸治療師訓練集點卡</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-    .action-bar { margin-bottom: 20px; }
-    .btn { background: #0056b3; color: white; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
-    .btn:hover { background: #003d80; }
-    #capture-card { width: 1200px; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); position: relative; }
     
-    .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .header-title h1 { color: #0056b3; font-size: 28px; font-weight: 800; }
+    .action-bar { margin-bottom: 20px; display: flex; gap: 12px; }
+    .btn { background: #0056b3; color: white; border: none; padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
+    .btn:hover { background: #003d80; }
+    .btn-reset { background: #d9534f; }
+    .btn-reset:hover { background: #c9302c; }
+
+    #capture-card { width: 100%; max-width: 1200px; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); position: relative; }
+    
+    .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px; }
+    .header-title h1 { color: #0056b3; font-size: 26px; font-weight: 800; }
     .header-title p { color: #666; font-size: 14px; margin-top: 4px; }
     .source-tag { background: #e6f7ff; border: 1px solid #91d5ff; color: #0056b3; font-size: 13px; font-weight: bold; padding: 6px 12px; border-radius: 6px; }
-    
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+
+    /* 全局進度條 */
+    .overall-progress { background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 8px; padding: 15px; margin-bottom: 24px; }
+    .progress-title { font-size: 15px; font-weight: bold; color: #0056b3; display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .progress-bar-bg { background: #d9d9d9; height: 16px; border-radius: 8px; overflow: hidden; }
+    .progress-bar-fill { background: linear-gradient(90deg, #1890ff, #52c41a); height: 100%; width: 0%; transition: width 0.4s ease; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px; }
     .stage-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px; }
     .stage-1 { border-top: 4px solid #1890ff; }
     .stage-2 { border-top: 4px solid #52c41a; }
     .stage-3 { border-top: 4px solid #722ed1; }
     
-    .stage-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .stage-title { font-size: 17px; font-weight: bold; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
     .stage-1 .stage-title { color: #096dd9; }
     .stage-2 .stage-title { color: #389e0d; }
     .stage-3 .stage-title { color: #531dab; }
     .badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #fff; border: 1px solid #d9d9d9; }
-    
-    .meta-info { font-size: 13px; color: #555; margin-bottom: 12px; background: #fff; padding: 8px; border-radius: 4px; border: 1px dashed #d9d9d9; }
-    
-    .section-box { margin-bottom: 12px; }
-    .section-box-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
-    .content-list { list-style: none; font-size: 12px; color: #444; line-height: 1.6; }
-    .content-list li { position: relative; padding-left: 12px; }
-    .content-list li::before { content: "•"; position: absolute; left: 0; color: #888; }
-    
-    .recurrent-section { background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
-    .recurrent-title { font-size: 16px; font-weight: bold; color: #274e13; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-    .recurrent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 13px; color: #333; }
-    .recurrent-item { background: #ffffff; padding: 10px 14px; border-radius: 6px; border: 1px solid #d9f7be; }
-    .recurrent-item strong { color: #389e0d; }
-    
-    .footer-note { text-align: right; font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 10px; }
+
+    .section-box { margin-bottom: 16px; }
+    .section-box-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+
+    /* 集點網格 */
+    .stamp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+    .stamp-item { background: #ffffff; border: 2px dashed #d9d9d9; border-radius: 8px; padding: 8px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; min-height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .stamp-item:hover { border-color: #1890ff; background: #f0f7ff; }
+    .stamp-item .item-name { font-size: 12px; color: #555; font-weight: 500; line-height: 1.3; }
+    .stamp-item .item-sub { font-size: 10px; color: #888; margin-top: 2px; }
+
+    /* 蓋章合格狀態 */
+    .stamp-item.stamped { border: 2px solid #52c41a; background: #f6ffed; }
+    .stamp-item.stamped::after { content: "合格"; position: absolute; right: 4px; bottom: 2px; font-size: 11px; font-weight: bold; color: #52c41a; border: 1px solid #52c41a; padding: 0 4px; border-radius: 4px; transform: rotate(-10deg); }
+    .stamp-item.stamped .item-name { color: #274e13; font-weight: bold; }
+
+    .recurrent-section { background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+    .recurrent-title { font-size: 15px; font-weight: bold; color: #274e13; margin-bottom: 12px; }
+    .recurrent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; font-size: 12px; }
+    .recurrent-item { background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #d9f7be; }
+
+    .footer-note { text-align: right; font-size: 11px; color: #888; border-top: 1px solid #eee; padding-top: 8px; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
   <div class="action-bar">
-    <button class="btn" onclick="downloadPNG()">📷 一鍵下載高清 PNG 圖表</button>
+    <button class="btn" onclick="downloadPNG()">📷 下載目前集點卡 PNG</button>
+    <button class="btn btn-reset" onclick="resetStamps()">🔄 重設個人點數</button>
   </div>
 
   <div id="capture-card">
     <div class="header">
       <div class="header-title">
         <h1>國立臺灣大學醫學院附設醫院</h1>
-        <p>二年期呼吸治療師 (PGY RT) 24M 訓練計劃時程地圖 (Time Table)</p>
+        <p>二年期呼吸治療師 (PGY RT) 24M 訓練集點卡</p>
       </div>
       <div class="source-tag">
-        📋 資料來源：臺大醫院 二年期呼吸治療師訓練計畫（114年修訂版）
+        📋 資料來源：臺大醫院 二年期呼吸治療師訓練計畫（114年修訂版）[cite: 2]
+      </div>
+    </div>
+
+    <!-- 全局進度 -->
+    <div class="overall-progress">
+      <div class="progress-title">
+        <span>🏆 PGY 24M 完訓總進度解鎖率</span>
+        <span id="progress-text">0 / 0 (0%)</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
       </div>
     </div>
 
@@ -67,163 +96,233 @@
       <!-- 階段一 -->
       <div class="stage-card stage-1">
         <div class="stage-title">階段一：基礎課程 <span class="badge">M1 - M3</span></div>
-        <div class="meta-info">
-          <strong>核心目標：</strong>基礎技能、兒科訓練、值班準備<br>
-          <strong>照護人數：</strong>M1(4-6人) → M2(6-8人) → M3(8-10人)
-        </div>
         
         <div class="section-box">
-          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
-          <ul class="content-list">
-            <li>前3天：到職/人安/模擬人操作</li>
-            <li>W2-W9：基本技能(12h)：氧療/Airvo2/VPN/SOP/iNO/HFOV/Prone/LR</li>
-            <li>W10-W12：小兒訓練(≥8h)</li>
-            <li>TMS 必修線上課程：≥ 5 小時</li>
-          </ul>
-        </div>
-
-        <div class="section-box">
           <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
-          <ul class="content-list">
-            <li>EPA 1 藥物吸入照護 (每2個月 ≥ 1次)</li>
-            <li>EPA 5 氧氣治療照護 (每2個月 ≥ 1次)</li>
-            <li>EPA 6 侵襲呼吸器設定 (每2個月 ≥ 1次)</li>
-          </ul>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-1">
+              <div class="item-name">EPA 1 藥物吸入</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-5">
+              <div class="item-name">EPA 5 氧氣治療</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-6">
+              <div class="item-name">EPA 6 侵襲呼吸器</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+          </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考評核與筆試 (前測≥80分免後測)</div>
-          <ul class="content-list">
-            <li>侵襲/非侵襲呼吸器管路裝置與初始設定 (無Pre/Post，臨床前必備)</li>
-            <li>呼吸管路更換作業流程</li>
-            <li>肺部功能測量作業流程</li>
-            <li>氣管內管氣囊漏氣測試作業流程</li>
-            <li>呼吸評估測量作業流程</li>
-            <li>呼吸器病人小量噴霧器作業流程</li>
-            <li>學前/學後筆試 (需 ≥ 80 分)</li>
-          </ul>
+          <div class="section-box-title">🔴 技術考評核 (前測≥80分免後測)</div>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-1">
+              <div class="item-name">呼吸器管路初始設定</div>
+              <div class="item-sub">上臨床前必備[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-2">
+              <div class="item-name">呼吸管路更換</div>
+              <div class="item-sub">0-3M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-3">
+              <div class="item-name">肺部功能測量</div>
+              <div class="item-sub">0-3M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-4">
+              <div class="item-name">氣囊漏氣測試</div>
+              <div class="item-sub">0-3M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-5">
+              <div class="item-name">呼吸評估測量</div>
+              <div class="item-sub">0-3M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-6">
+              <div class="item-name">小量噴霧器作業</div>
+              <div class="item-sub">0-3M技術考[cite: 1, 2]</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 階段二 -->
       <div class="stage-card stage-2">
         <div class="stage-title">階段二：核心課程 <span class="badge">M4 - M12</span></div>
-        <div class="meta-info">
-          <strong>核心目標：</strong>進階重症技能、臨床獨立照護<br>
-          <strong>照護人數：</strong>專責單位獨立照顧 (10-12人)
-        </div>
-
-        <div class="section-box">
-          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
-          <ul class="content-list">
-            <li>進階專業技能 (20h)：BLS/ACLS證照(5h)、居家健保(1h)、急處置/脫離/氣道/小兒(14h)</li>
-            <li>TMS 必修線上課程：≥ 10 小時</li>
-            <li>跨領域討論：≥ 3 小時</li>
-          </ul>
-        </div>
 
         <div class="section-box">
           <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
-          <ul class="content-list">
-            <li>EPA 3 胸腹手術肺擴張 (每6個月 ≥ 1次)</li>
-            <li>EPA 8 呼吸器緊急處置 (每2個月 ≥ 1次)</li>
-            <li>EPA 9 呼吸器病人轉送 (每2個月 ≥ 1次)</li>
-            <li>EPA 10 侵襲呼吸器脫離 (每2個月 ≥ 1次)</li>
-            <li>EPA 11 移除氣管內管 (每3個月 ≥ 1次)</li>
-          </ul>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-3">
+              <div class="item-name">EPA 3 胸腹肺擴張</div>
+              <div class="item-sub">每6個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-8">
+              <div class="item-name">EPA 8 緊急處置</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-9">
+              <div class="item-name">EPA 9 病人轉送</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-10">
+              <div class="item-name">EPA 10 呼吸器脫離</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-11">
+              <div class="item-name">EPA 11 移除氣管內管</div>
+              <div class="item-sub">每3個月≥1次[cite: 1, 2]</div>
+            </div>
+          </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考評核與報告 (前測≥80分免後測)</div>
-          <ul class="content-list">
-            <li>俯臥作業流程</li>
-            <li>高頻呼吸器 (HFOV) 作業流程</li>
-            <li>一氧化氮 (iNO) 吸入作業流程</li>
-            <li>肺部擴充術作業流程</li>
-            <li>專業課程筆試 (後測需 ≥ 80分)</li>
-            <li>個案報告 1 篇 (≥ 80分)</li>
-            <li>期刊報告 1 篇 (≥ 80分)</li>
-          </ul>
+          <div class="section-box-title">🔴 技術考與報告</div>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-7">
+              <div class="item-name">俯臥作業流程</div>
+              <div class="item-sub">4-12M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-8">
+              <div class="item-name">高頻呼吸器 HFOV</div>
+              <div class="item-sub">4-12M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-9">
+              <div class="item-name">一氧化氮 iNO 吸入</div>
+              <div class="item-sub">4-12M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-10">
+              <div class="item-name">肺部擴充術作業</div>
+              <div class="item-sub">4-12M技術考[cite: 1, 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="rep-1">
+              <div class="item-name">個案報告 1 篇</div>
+              <div class="item-sub">需 ≥ 80 分[cite: 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="rep-2">
+              <div class="item-name">期刊報告 1 篇</div>
+              <div class="item-sub">需 ≥ 80 分[cite: 2]</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 階段三 -->
       <div class="stage-card stage-3">
         <div class="stage-title">階段三：專業課程 <span class="badge">M13 - M24</span></div>
-        <div class="meta-info">
-          <strong>核心目標：</strong>兒科重症、高階重症勝任<br>
-          <strong>照護人數：</strong>成人重症(12-15人)、兒科/病房(≥15人)
-        </div>
-
-        <div class="section-box">
-          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
-          <ul class="content-list">
-            <li>兒科照護訓練(16h)：兒科/兒重輪訓(各6-8週)</li>
-            <li>重症技能(16h)：ECG/血流動力學/EIT/ECMO/ARDS/COPD/VAP/營養</li>
-            <li>TMS 必修線上課程：≥ 15 小時</li>
-            <li>跨領域討論：≥ 5 小時</li>
-          </ul>
-        </div>
 
         <div class="section-box">
           <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
-          <ul class="content-list">
-            <li>EPA 7 呼吸窘迫處置 (每2個月 ≥ 1次)</li>
-          </ul>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="epa-7">
+              <div class="item-name">EPA 7 呼吸窘迫處置</div>
+              <div class="item-sub">每2個月≥1次[cite: 1, 2]</div>
+            </div>
+          </div>
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">🔴 技術考評核與報告</div>
-          <ul class="content-list">
-            <li>13-24個月技術評核總驗收</li>
-            <li>小兒 HFOV / iNO 模擬測驗</li>
-            <li>個案報告 1 篇 (≥ 80分)</li>
-            <li>文獻實證專題報告 1 篇 (≥ 80分)</li>
-          </ul>
+          <div class="section-box-title">🔴 技術考與總驗收</div>
+          <div class="stamp-grid">
+            <div class="stamp-item" onclick="toggleStamp(this)" id="tech-11">
+              <div class="item-name">13-24M 技術評核</div>
+              <div class="item-sub">總驗收[cite: 1]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="sim-1">
+              <div class="item-name">小兒 HFOV/iNO 模擬</div>
+              <div class="item-sub">通過模擬測驗[cite: 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="rep-3">
+              <div class="item-name">個案報告 1 篇</div>
+              <div class="item-sub">需 ≥ 80 分[cite: 2]</div>
+            </div>
+            <div class="stamp-item" onclick="toggleStamp(this)" id="rep-4">
+              <div class="item-name">文獻實證專題報告</div>
+              <div class="item-sub">需 ≥ 80 分[cite: 2]</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 週期性管考 -->
+    <!-- 週期管考 -->
     <div class="recurrent-section">
-      <div class="recurrent-title">🟢 週期性常態管考 (Recurrent Trackers - 貫穿 24M)</div>
+      <div class="recurrent-title">🟢 貫穿 24M 常態管考項目</div>
       <div class="recurrent-grid">
-        <div class="recurrent-item">
-          <strong>📌 每月 (Monthly)</strong><br>
-          • 導師生活輔導訪談 1 次<br>
-          • 教學部線上滿意度調查
-        </div>
-        <div class="recurrent-item">
-          <strong>📌 每 3 個月 (Quarterly)</strong><br>
-          • Mini-CEX 評量 1 次<br>
-          • CbD 病例討論 1 次 (360度評估)<br>
-          • IPD 跨領域討論 1 次 (累計 8h)<br>
-          • SIRIPPP 核心能力自評與教師評核
-        </div>
-        <div class="recurrent-item">
-          <strong>📌 階段性 / 半年</strong><br>
-          • CCC 臨床能力委員會討論會 (M3 第一次召開，之後每半年一次)
-        </div>
-        <div class="recurrent-item">
-          <strong>📌 人文素養與全人照護 (TMS / 學會 / 公會 / 醫策會課程與時數採計)</strong><br>
-          • 第一年累計 ≥ 12 小時<br>
-          • 第二年累計 ≥ 6 小時 (含人安、倫理、感染管制、高齡等)
-        </div>
+        <div class="recurrent-item"><strong>📌 每月：</strong>導師生活輔導訪談 1 次、滿意度調查[cite: 2]</div>
+        <div class="recurrent-item"><strong>📌 每 3 個月：</strong>Mini-CEX 1次、CbD 討論 1次、IPD 討論 1次[cite: 1, 2]</div>
+        <div class="recurrent-item"><strong>📌 半年/階段：</strong>CCC 討論會 (M3 第一次，之後每半年一次)[cite: 1, 2]</div>
+        <div class="recurrent-item"><strong>📌 人文全人：</strong>Y1 ≥ 12h, Y2 ≥ 6h (TMS/學會/公會/醫策會)[cite: 2]</div>
       </div>
     </div>
 
     <div class="footer-note">
-      * 本圖表內容依據「國立臺灣大學醫學院附設醫院 二年期呼吸治療師訓練計畫 (114年修訂版)」規範製作。
+      * 本圖表集點卡內容依據「國立臺灣大學醫學院附設醫院 二年期呼吸治療師訓練計畫 (114年修訂版)」規範製作[cite: 2]。
     </div>
-
   </div>
 
   <script>
+    // 初始化加載 LocalStorage 數據
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSavedStamps();
+      updateProgress();
+    });
+
+    // 點擊蓋章/取消蓋章
+    function toggleStamp(element) {
+      element.classList.toggle("stamped");
+      saveStamps();
+      updateProgress();
+    }
+
+    // 更新進度條
+    function updateProgress() {
+      const totalItems = document.querySelectorAll(".stamp-item").length;
+      const stampedItems = document.querySelectorAll(".stamp-item.stamped").length;
+      const percentage = Math.round((stampedItems / totalItems) * 100);
+
+      document.getElementById("progress-text").innerText = `${stampedItems} / ${totalItems} (${percentage}%)`;
+      document.getElementById("progress-fill").style.width = `${percentage}%`;
+    }
+
+    // 儲存狀態至 LocalStorage
+    function saveStamps() {
+      const stampedIds = [];
+      document.querySelectorAll(".stamp-item.stamped").forEach(item => {
+        stampedIds.push(item.id);
+      });
+      localStorage.setItem("ntuh_pgy_stamps", JSON.stringify(stampedIds));
+    }
+
+    // 從 LocalStorage 載入狀態
+    function loadSavedStamps() {
+      const saved = localStorage.getItem("ntuh_pgy_stamps");
+      if (saved) {
+        const stampedIds = JSON.parse(saved);
+        stampedIds.forEach(id => {
+          const item = document.getElementById(id);
+          if (item) item.classList.add("stamped");
+        });
+      }
+    }
+
+    // 重設點數
+    function resetStamps() {
+      if (confirm("確定要重設所有已蓋印的集點紀錄嗎？")) {
+        localStorage.removeItem("ntuh_pgy_stamps");
+        document.querySelectorAll(".stamp-item").forEach(item => {
+          item.classList.remove("stamped");
+        });
+        updateProgress();
+      }
+    }
+
+    // 下載 PNG 圖片
     function downloadPNG() {
       const card = document.getElementById('capture-card');
       html2canvas(card, { scale: 2 }).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'NTUH_PGY_RT_24M_TimeTable_114.png';
+        link.download = 'NTUH_PGY_RT_StampCard_Progress.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
       });
