@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>臺大醫院 PGY 24M 呼吸治療師訓練 Time Table</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    .action-bar { margin-bottom: 20px; }
+    .btn { background: #0056b3; color: white; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
+    .btn:hover { background: #003d80; }
+    #capture-card { width: 1200px; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 24px; }
+    .header h1 { color: #0056b3; font-size: 28px; font-weight: 800; }
+    .header p { color: #666; font-size: 14px; margin-top: 4px; }
+    
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+    .stage-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px; }
+    .stage-1 { border-top: 4px solid #1890ff; }
+    .stage-2 { border-top: 4px solid #52c41a; }
+    .stage-3 { border-top: 4px solid #722ed1; }
+    
+    .stage-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .stage-1 .stage-title { color: #096dd9; }
+    .stage-2 .stage-title { color: #389e0d; }
+    .stage-3 .stage-title { color: #531dab; }
+    .badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #fff; border: 1px solid #d9d9d9; }
+    
+    .meta-info { font-size: 13px; color: #555; margin-bottom: 12px; background: #fff; padding: 8px; border-radius: 4px; border: 1px dashed #d9d9d9; }
+    
+    .section-box { margin-bottom: 12px; }
+    .section-box-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+    .content-list { list-style: none; font-size: 12px; color: #444; line-height: 1.6; }
+    .content-list li { position: relative; padding-left: 12px; }
+    .content-list li::before { content: "•"; position: absolute; left: 0; color: #888; }
+    
+    .recurrent-section { background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 8px; padding: 20px; }
+    .recurrent-title { font-size: 16px; font-weight: bold; color: #274e13; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .recurrent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 13px; color: #333; }
+    .recurrent-item { background: #ffffff; padding: 10px 14px; border-radius: 6px; border: 1px solid #d9f7be; }
+    .recurrent-item strong { color: #389e0d; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+  <div class="action-bar">
+    <button class="btn" onclick="downloadPNG()">📷 一鍵下載高清 PNG 圖表</button>
+  </div>
+
+  <div id="capture-card">
+    <div class="header">
+      <h1>國立臺灣大學醫學院附設醫院</h1>
+      <p>二年期呼吸治療師 (PGY RT) 24M 訓練計劃時程地圖 (Time Table)</p>
+    </div>
+
+    <div class="grid-3">
+      <!-- 階段一 -->
+      <div class="stage-card stage-1">
+        <div class="stage-title">階段一：基礎課程 <span class="badge">M1 - M3</span></div>
+        <div class="meta-info">
+          <strong>核心目標：</strong>基礎技能、兒科訓練、值班準備<br>
+          <strong>照護人數：</strong>M1(4-6人) → M2(6-8人) → M3(8-10人)
+        </div>
+        
+        <div class="section-box">
+          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
+          <ul class="content-list">
+            <li>前3天：到職/人安/模擬人操作[cite: 2]</li>
+            <li>W2-W9：基本技能(12h)：氧療/Airvo2/VPN/SOP/iNO/HFOV/Prone/LR[cite: 2]</li>
+            <li>W10-W12：小兒訓練(≥8h)[cite: 2]</li>
+            <li>TMS 必修線上課程：≥ 5 小時[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
+          <ul class="content-list">
+            <li>EPA 1 藥物吸入照護 (每2個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 5 氧氣治療照護 (每2個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 6 侵襲呼吸器設定 (每2個月 ≥ 1次)[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考評核與筆試</div>
+          <ul class="content-list">
+            <li>學前/學後筆試 (需 ≥ 80 分)[cite: 2]</li>
+            <li>標準技術考 (前測 ≥ 80分免後測)[cite: 2]</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 階段二 -->
+      <div class="stage-card stage-2">
+        <div class="stage-title">階段二：核心課程 <span class="badge">M4 - M12</span></div>
+        <div class="meta-info">
+          <strong>核心目標：</strong>進階重症技能、臨床獨立照護<br>
+          <strong>照護人數：</strong>專責單位獨立照顧 (10-12人)
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
+          <ul class="content-list">
+            <li>進階專業技能 (20h)：BLS/ACLS證照(5h)、居家健保(1h)、急處置/脫離/氣道/小兒(14h)[cite: 2]</li>
+            <li>TMS 必修線上課程：≥ 10 小時[cite: 2]</li>
+            <li>跨領域討論：≥ 3 小時[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
+          <ul class="content-list">
+            <li>EPA 3 胸腹手術肺擴張 (每6個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 8 呼吸器緊急處置 (每2個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 9 呼吸器病人轉送 (每2個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 10 侵襲呼吸器脫離 (每2個月 ≥ 1次)[cite: 2]</li>
+            <li>EPA 11 移除氣管內管 (每3個月 ≥ 1次)[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考評核與報告</div>
+          <ul class="content-list">
+            <li>專業課程筆試 & 技術考 (後測需 ≥ 80分)[cite: 2]</li>
+            <li>個案報告 1 篇 (≥ 80分)[cite: 2]</li>
+            <li>期刊報告 1 篇 (≥ 80分)[cite: 2]</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 階段三 -->
+      <div class="stage-card stage-3">
+        <div class="stage-title">階段三：專業課程 <span class="badge">M13 - M24</span></div>
+        <div class="meta-info">
+          <strong>核心目標：</strong>兒科重症、高階重症勝任<br>
+          <strong>照護人數：</strong>成人重症(12-15人)、兒科/病房(≥15人)
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔷 臨床輪訓與專業課程</div>
+          <ul class="content-list">
+            <li>兒科照護訓練(16h)：兒科/兒重輪訓(各6-8週)[cite: 2]</li>
+            <li>重症技能(16h)：ECG/血流動力學/EIT/ECMO/ARDS/COPD/VAP/營養[cite: 2]</li>
+            <li>TMS 必修線上課程：≥ 15 小時[cite: 2]</li>
+            <li>跨領域討論：≥ 5 小時[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔶 EPA 可信賴專業活動 (≥ Level 4)</div>
+          <ul class="content-list">
+            <li>EPA 7 呼吸窘迫處置 (每2個月 ≥ 1次)[cite: 2]</li>
+          </ul>
+        </div>
+
+        <div class="section-box">
+          <div class="section-box-title">🔴 技術考評核與報告</div>
+          <ul class="content-list">
+            <li>小兒 HFOV / iNO 模擬測驗[cite: 2]</li>
+            <li>個案報告 1 篇 (≥ 80分)[cite: 2]</li>
+            <li>文獻實證專題報告 1 篇 (≥ 80分)[cite: 2]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 週期性管考 -->
+    <div class="recurrent-section">
+      <div class="recurrent-title">🟢 週期性常態管考 (Recurrent Trackers - 貫穿 24M)</div>
+      <div class="recurrent-grid">
+        <div class="recurrent-item">
+          <strong>📌 每月 (Monthly)</strong><br>
+          • 導師生活輔導訪談 1 次[cite: 2]<br>
+          • 教學部線上滿意度調查[cite: 2]
+        </div>
+        <div class="recurrent-item">
+          <strong>📌 每 3 個月 (Quarterly)</strong><br>
+          • Mini-CEX 評量 1 次[cite: 2]<br>
+          • CbD 病例討論 1 次 (360度評估)[cite: 2]<br>
+          • IPD 跨領域討論 1 次 (累計 8h)[cite: 2]<br>
+          • SIRIPPP 核心能力自評與教師評核[cite: 2]
+        </div>
+        <div class="recurrent-item">
+          <strong>📌 階段性 / 半年</strong><br>
+          • CCC 臨床能力委員會討論會 (M3 第一次召開，之後每半年一次)[cite: 2]
+        </div>
+        <div class="recurrent-item">
+          <strong>📌 人文素養與全人照護</strong><br>
+          • 第一年累計 ≥ 12 小時[cite: 2]<br>
+          • 第二年累計 ≥ 6 小時 (含人安、倫理、感染管制、高齡等)[cite: 2]
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function downloadPNG() {
+      const card = document.getElementById('capture-card');
+      html2canvas(card, { scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'NTUH_PGY_RT_24M_TimeTable.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
