@@ -55,10 +55,10 @@
     .stamp-badge { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold; background: #f5f5f5; color: #8c8c8c; border: 1px solid #d9d9d9; }
     .stamp-item.completed .stamp-badge { background: #52c41a; color: #ffffff; border: 1px solid #389e0d; }
 
-    /* 多按鈕組合樣式 (EPA 與 月份按鈕共用) */
+    /* 多按鈕組合樣式 (EPA 與 常態管考按鈕共用) */
     .multi-btn-item { display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #d9d9d9; border-radius: 6px; padding: 6px 10px; }
-    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-    .sub-btn { font-size: 11px; font-weight: bold; padding: 3px 7px; border-radius: 4px; background: #f5f5f5; color: #555; border: 1px solid #d9d9d9; cursor: pointer; user-select: none; transition: all 0.2s; }
+    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 60%; }
+    .sub-btn { font-size: 11px; font-weight: bold; padding: 3px 6px; border-radius: 4px; background: #f5f5f5; color: #555; border: 1px solid #d9d9d9; cursor: pointer; user-select: none; transition: all 0.2s; }
     .sub-btn:hover { background: #e6f7ff; border-color: #40a9ff; color: #1890ff; }
     .sub-btn.completed { background: #52c41a; color: #ffffff; border-color: #389e0d; }
 
@@ -179,7 +179,12 @@
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m3">M3</span>
               </div>
             </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s1_ccc3"><span class="stamp-text">CCC 臨床能力委員會討論會 (M3)</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="multi-btn-item">
+              <span class="stamp-text">CCC 臨床能力委員會討論會</span>
+              <div class="btn-group">
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="s1_ccc3">M3</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -292,7 +297,12 @@
                 <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m12">M12</span>
               </div>
             </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s2_ccc9"><span class="stamp-text">CCC 臨床能力委員會討論會 (M9)</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="multi-btn-item">
+              <span class="stamp-text">CCC 臨床能力委員會討論會</span>
+              <div class="btn-group">
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="s2_ccc9">M9</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -349,17 +359,44 @@
             <div class="multi-btn-item">
               <span class="stamp-text">導師輔導訪談</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m13_24">M13-24</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m13">M13</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m14">M14</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m15">M15</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m16">M16</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m17">M17</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m18">M18</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m19">M19</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m20">M20</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m21">M21</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m22">M22</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m23">M23</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="interview_m24">M24</span>
               </div>
             </div>
             <div class="multi-btn-item">
               <span class="stamp-text">教學滿意度調查</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m13_24">M13-24</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m13">M13</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m14">M14</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m15">M15</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m16">M16</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m17">M17</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m18">M18</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m19">M19</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m20">M20</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m21">M21</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m22">M22</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m23">M23</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="survey_m24">M24</span>
               </div>
             </div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s3_ccc15"><span class="stamp-text">CCC 臨床能力委員會討論會 (M15)</span><span class="stamp-badge">🔒 未解鎖</span></div>
-            <div class="stamp-item" onclick="toggleStamp(this)" data-id="s3_ccc21"><span class="stamp-text">CCC 臨床能力委員會討論會 (M21)</span><span class="stamp-badge">🔒 未解鎖</span></div>
+            <div class="multi-btn-item">
+              <span class="stamp-text">CCC 臨床能力委員會討論會</span>
+              <div class="btn-group">
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="s3_ccc15">M15</span>
+                <span class="sub-btn" onclick="toggleSubBtn(this)" data-id="s3_ccc21">M21</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
