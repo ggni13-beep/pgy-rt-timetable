@@ -155,7 +155,7 @@
         });
 
         updateProgressBar();
-        updateMultiStageRadarChart(records);
+        updateMultiTestRadarChart(records);
         updateTechBarChart(records);
       });
     }
@@ -223,7 +223,7 @@
       document.getElementById('progress-text').textContent = `${completedItems} / ${totalItems} (${percentage}%)`;
     }
 
-    // 初始化三階段重疊雷達圖與技術考柱狀圖
+    // 初始化 3 次評核多層雷達圖與技術考柱狀圖
     function initCharts() {
       const ctxRadar = document.getElementById('epaRadarChart').getContext('2d');
       radarChart = new Chart(ctxRadar, {
@@ -232,7 +232,7 @@
           labels: ['EPA 1', 'EPA 3', 'EPA 5', 'EPA 6', 'EPA 7', 'EPA 8', 'EPA 9', 'EPA 10', 'EPA 11'],
           datasets: [
             {
-              label: '🔵 階段一 (M1-M3)',
+              label: '🔵 第一次評核 (Test 1)',
               data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
               backgroundColor: 'rgba(24, 144, 255, 0.15)',
               borderColor: '#1890ff',
@@ -240,7 +240,7 @@
               pointBackgroundColor: '#1890ff'
             },
             {
-              label: '🟢 階段二 (M4-M12)',
+              label: '🟢 第二次評核 (Test 2)',
               data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
               backgroundColor: 'rgba(82, 196, 26, 0.15)',
               borderColor: '#52c41a',
@@ -248,7 +248,7 @@
               pointBackgroundColor: '#52c41a'
             },
             {
-              label: '🟣 階段三 (M13-M24)',
+              label: '🟣 第三次評核 (Test 3)',
               data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
               backgroundColor: 'rgba(114, 46, 209, 0.15)',
               borderColor: '#722ed1',
@@ -297,51 +297,39 @@
       });
     }
 
-    // 計算 EPA 項目平均值
-    function getAvgScore(ids, records) {
-      let total = 0, count = 0;
-      ids.forEach(id => {
-        if (records[id] && records[id].score) {
-          const num = parseFloat(records[id].score);
-          if (!isNaN(num)) {
-            total += num;
-            count++;
-          }
-        }
-      });
-      return count > 0 ? (total / count).toFixed(1) : 0;
+    // 取得指定次數的單次分數 (例如 _1, _2, _3)
+    function getSingleScore(id, records) {
+      if (records[id] && records[id].score) {
+        const num = parseFloat(records[id].score);
+        return !isNaN(num) ? num : 0;
+      }
+      return 0;
     }
 
-    // 更新三階段重疊雷達圖數據
-    function updateMultiStageRadarChart(records) {
-      const epaKeys = ['epa1', 'epa3', 'epa5', 'epa6', 'epa7', 'epa8', 'epa9', 'epa10', 'epa11'];
-      const epaGroups = {
-        'epa1': ['epa1_1', 'epa1_2', 'epa1_3'],
-        'epa3': ['epa3_1', 'epa3_2', 'epa3_3'],
-        'epa5': ['epa5_1', 'epa5_2', 'epa5_3'],
-        'epa6': ['epa6_1', 'epa6_2', 'epa6_3'],
-        'epa7': ['epa7_1', 'epa7_2', 'epa7_3'],
-        'epa8': ['epa8_1', 'epa8_2', 'epa8_3'],
-        'epa9': ['epa9_1', 'epa9_2', 'epa9_3'],
-        'epa10': ['epa10_1', 'epa10_2', 'epa10_3'],
-        'epa11': ['epa11_1', 'epa11_2', 'epa11_3']
-      };
+    // 更新 3 次評核多層雷達圖數據
+    function updateMultiTestRadarChart(records) {
+      // 9 大 EPA 項目對應 ID
+      const epaList = [
+        { epa: 'epa1', ids: ['epa1_1', 'epa1_2', 'epa1_3'] },
+        { epa: 'epa3', ids: ['epa3_1', 'epa3_2', 'epa3_3'] },
+        { epa: 'epa5', ids: ['epa5_1', 'epa5_2', 'epa5_3'] },
+        { epa: 'epa6', ids: ['epa6_1', 'epa6_2', 'epa6_3'] },
+        { epa: 'epa7', ids: ['epa7_1', 'epa7_2', 'epa7_3'] },
+        { epa: 'epa8', ids: ['epa8_1', 'epa8_2', 'epa8_3'] },
+        { epa: 'epa9', ids: ['epa9_1', 'epa9_2', 'epa9_3'] },
+        { epa: 'epa10', ids: ['epa10_1', 'epa10_2', 'epa10_3'] },
+        { epa: 'epa11', ids: ['epa11_1', 'epa11_2', 'epa11_3'] }
+      ];
 
-      // 階段一涵蓋：EPA 1, EPA 5, EPA 6
-      const s1Keys = ['epa1', 'epa5', 'epa6'];
-      // 階段二涵蓋：EPA 3, EPA 8, EPA 9, EPA 10, EPA 11
-      const s2Keys = ['epa3', 'epa8', 'epa9', 'epa10', 'epa11'];
-      // 階段三涵蓋：EPA 7
-      const s3Keys = ['epa7'];
-
-      const s1Data = epaKeys.map(k => s1Keys.includes(k) ? getAvgScore(epaGroups[k], records) : 0);
-      const s2Data = epaKeys.map(k => s2Keys.includes(k) ? getAvgScore(epaGroups[k], records) : 0);
-      const s3Data = epaKeys.map(k => s3Keys.includes(k) ? getAvgScore(epaGroups[k], records) : 0);
+      // 分別提取第 1 次(_1)、第 2 次(_2)、第 3 次(_3)的分數陣列
+      const test1Data = epaList.map(item => getSingleScore(item.ids[0], records));
+      const test2Data = epaList.map(item => getSingleScore(item.ids[1], records));
+      const test3Data = epaList.map(item => getSingleScore(item.ids[2], records));
 
       if (radarChart) {
-        radarChart.data.datasets[0].data = s1Data;
-        radarChart.data.datasets[1].data = s2Data;
-        radarChart.data.datasets[2].data = s3Data;
+        radarChart.data.datasets[0].data = test1Data;
+        radarChart.data.datasets[1].data = test2Data;
+        radarChart.data.datasets[2].data = test3Data;
         radarChart.update();
       }
     }
@@ -382,7 +370,7 @@
     <!-- 雙圖表與進度儀表板 -->
     <div class="dashboard-grid">
       <div class="chart-container">
-        <div style="font-size: 12px; font-weight: bold; text-align: center; color: #0056b3; margin-bottom: 4px;">三階段 EPA 成長軌跡雷達圖</div>
+        <div style="font-size: 12px; font-weight: bold; text-align: center; color: #0056b3; margin-bottom: 4px;">EPA 多次評核縱向進步雷達圖</div>
         <canvas id="epaRadarChart"></canvas>
       </div>
       <div class="chart-container">
@@ -395,7 +383,7 @@
           <div class="progress-bar-fill" id="progress-bar"></div>
         </div>
         <div style="font-size: 18px; font-weight: bold; color: #0056b3;" id="progress-text">0 / 43 (0%)</div>
-        <p style="font-size: 11px; color: #666; margin-top: 8px;">* 藍、綠、紫三線顯示 M1~M24 階段成長；技術考預設 80 分。</p>
+        <p style="font-size: 11px; color: #666; margin-top: 8px;">* 藍、綠、紫三線顯示第 1~3 次評核進步軌跡；技術考預設 80 分。</p>
       </div>
     </div>
 
