@@ -60,7 +60,7 @@
 
     /* 多按鈕組合卡片 */
     .multi-btn-item { display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #d9d9d9; border-radius: 6px; padding: 6px 10px; }
-    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 65%; }
+    .btn-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 70%; }
     .sub-btn { font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 4px; background: #f5f5f5; color: #555; border: 1px solid #d9d9d9; cursor: pointer; user-select: none; transition: all 0.2s; }
     .sub-btn:hover { background: #e6f7ff; border-color: #40a9ff; color: #1890ff; }
     .sub-btn.completed { background: #52c41a !important; color: #ffffff !important; border-color: #389e0d !important; }
@@ -160,6 +160,7 @@
       });
     }
 
+    // 處理需要彈窗 key in 分數的項目 (EPA / 技術考 / CCC / SIRIPPP)
     window.handleScoreItem = function(event, type) {
       const target = event.currentTarget;
       const id = target.getAttribute('data-id');
@@ -167,7 +168,7 @@
       const itemRef = ref(database, `pgy_students/${pgyKey}/records/${id}`);
 
       if (isCompleted) {
-        const choice = confirm("該項目已完成！\n【按確定】：修改分數/註記\n【按取消】：清除紀錄變回未完成");
+        const choice = confirm("該項目已完成！\n【按確定】：修改分數/等級\n【按取消】：清除紀錄變回未完成");
         if (!choice) {
           remove(itemRef);
           return;
@@ -183,6 +184,12 @@
       } else if (type === 'tech') {
         promptMsg = "【技術考/報告評核】請輸入分數 (建議 80 ~ 100 分)：";
         defaultVal = "80";
+      } else if (type === 'ccc') {
+        promptMsg = "【CCC 臨床能力委員會討論會】請輸入信賴等級 (Level 1~5)：";
+        defaultVal = "3";
+      } else if (type === 'siri') {
+        promptMsg = "【SIRIPPP 核心能力自評】請輸入面向評分 Level (1~5分)：";
+        defaultVal = "3";
       }
 
       const inputVal = prompt(promptMsg, defaultVal);
@@ -223,7 +230,6 @@
       document.getElementById('progress-text').textContent = `${completedItems} / ${totalItems} (${percentage}%)`;
     }
 
-    // 初始化 3 次評核多層雷達圖與技術考柱狀圖
     function initCharts() {
       const ctxRadar = document.getElementById('epaRadarChart').getContext('2d');
       radarChart = new Chart(ctxRadar, {
@@ -297,7 +303,6 @@
       });
     }
 
-    // 取得指定次數的單次分數 (例如 _1, _2, _3)
     function getSingleScore(id, records) {
       if (records[id] && records[id].score) {
         const num = parseFloat(records[id].score);
@@ -306,9 +311,7 @@
       return 0;
     }
 
-    // 更新 3 次評核多層雷達圖數據
     function updateMultiTestRadarChart(records) {
-      // 9 大 EPA 項目對應 ID
       const epaList = [
         { epa: 'epa1', ids: ['epa1_1', 'epa1_2', 'epa1_3'] },
         { epa: 'epa3', ids: ['epa3_1', 'epa3_2', 'epa3_3'] },
@@ -321,7 +324,6 @@
         { epa: 'epa11', ids: ['epa11_1', 'epa11_2', 'epa11_3'] }
       ];
 
-      // 分別提取第 1 次(_1)、第 2 次(_2)、第 3 次(_3)的分數陣列
       const test1Data = epaList.map(item => getSingleScore(item.ids[0], records));
       const test2Data = epaList.map(item => getSingleScore(item.ids[1], records));
       const test3Data = epaList.map(item => getSingleScore(item.ids[2], records));
@@ -383,7 +385,7 @@
           <div class="progress-bar-fill" id="progress-bar"></div>
         </div>
         <div style="font-size: 18px; font-weight: bold; color: #0056b3;" id="progress-text">0 / 43 (0%)</div>
-        <p style="font-size: 11px; color: #666; margin-top: 8px;">* 藍、綠、紫三線顯示第 1~3 次評核進步軌跡；技術考預設 80 分。</p>
+        <p style="font-size: 11px; color: #666; margin-top: 8px;">* EPA / CCC / SIRIPPP 點擊皆可 key in Level 1~5 信賴等級與面向得分。</p>
       </div>
     </div>
 
@@ -450,7 +452,7 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">📌 階段一常態管考 (點擊即可打勾)</div>
+          <div class="section-box-title">📌 階段一常態管考與評核</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
               <span class="stamp-text">導師輔導訪談</span>
@@ -469,15 +471,21 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">CCC 討論會</span>
+              <span class="stamp-text">CCC 討論會 (點擊輸入 Level 1~5)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s1_ccc3">M3</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'ccc')" data-id="s1_ccc3">M3</span>
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">SIRIPPP 核心能力自評</span>
+              <span class="stamp-text">M3 SIRIPPP 核心能力自評 (1~5分)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s1_siri3">M3</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_s">S</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_i1">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_r">R</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_i2">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_p1">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_p2">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s1_siri3_p3">P</span>
               </div>
             </div>
           </div>
@@ -562,7 +570,7 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">📌 階段二常態管考 (點擊即可打勾)</div>
+          <div class="section-box-title">📌 階段二常態管考與評核</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
               <span class="stamp-text">導師輔導訪談</span>
@@ -593,15 +601,21 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">CCC 討論會</span>
+              <span class="stamp-text">CCC 討論會 (點擊輸入 Level 1~5)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s2_ccc9">M9</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'ccc')" data-id="s2_ccc9">M9</span>
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">SIRIPPP 核心能力自評</span>
+              <span class="stamp-text">M9 SIRIPPP 核心能力自評 (1~5分)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s2_siri9">M9</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_s">S</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_i1">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_r">R</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_i2">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_p1">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_p2">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s2_siri9_p3">P</span>
               </div>
             </div>
           </div>
@@ -655,7 +669,7 @@
         </div>
 
         <div class="section-box">
-          <div class="section-box-title">📌 階段三常態管考 (點擊即可打勾)</div>
+          <div class="section-box-title">📌 階段三常態管考與評核</div>
           <div class="stamp-list">
             <div class="multi-btn-item">
               <span class="stamp-text">導師輔導訪談</span>
@@ -692,17 +706,34 @@
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">CCC 討論會</span>
+              <span class="stamp-text">CCC 討論會 (點擊輸入 Level 1~5)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s3_ccc15">M15</span>
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s3_ccc21">M21</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'ccc')" data-id="s3_ccc15">M15</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'ccc')" data-id="s3_ccc21">M21</span>
               </div>
             </div>
             <div class="multi-btn-item">
-              <span class="stamp-text">SIRIPPP 核心能力自評</span>
+              <span class="stamp-text">M15 SIRIPPP 自評 (1~5分)</span>
               <div class="btn-group">
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s3_siri15">M15</span>
-                <span class="sub-btn" onclick="handleDirectToggle(event)" data-id="s3_siri21">M21</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_s">S</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_i1">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_r">R</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_i2">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_p1">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_p2">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri15_p3">P</span>
+              </div>
+            </div>
+            <div class="multi-btn-item" style="margin-top: 4px;">
+              <span class="stamp-text">M21 SIRIPPP 自評 (1~5分)</span>
+              <div class="btn-group">
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_s">S</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_i1">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_r">R</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_i2">I</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_p1">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_p2">P</span>
+                <span class="sub-btn" onclick="handleScoreItem(event, 'siri')" data-id="s3_siri21_p3">P</span>
               </div>
             </div>
           </div>
