@@ -8,18 +8,24 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 12px; }
     
-    .action-bar { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .action-bar { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
     .btn { background: #0056b3; color: white; border: none; padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
     .btn:hover { background: #003d80; }
     .btn-reset { background: #ff4d4f; }
     .btn-reset:hover { background: #cf1322; }
+
+    .date-setter { background: #ffffff; border: 1px solid #d9d9d9; padding: 6px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; color: #333; }
+    .date-setter input { font-size: 14px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; }
 
     #capture-card { width: 1200px; max-width: 100%; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
     
     .header { border-bottom: 3px solid #0056b3; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
     .header-title h1 { color: #0056b3; font-size: 24px; font-weight: 800; }
     .header-title p { color: #666; font-size: 14px; margin-top: 4px; font-weight: bold; }
+    
+    .meta-tag-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .source-tag { background: #e6f7ff; border: 1px solid #91d5ff; color: #0056b3; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 6px; }
+    .month-tag { background: #f6ffed; border: 1px solid #b7eb8f; color: #389e0d; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 6px; }
 
     /* 四大圖表儀表板區塊 */
     .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; align-items: stretch; background: #fafafa; border: 1px solid #d9d9d9; padding: 16px; border-radius: 8px; }
@@ -129,6 +135,22 @@
     });
 
     function listenFirebaseData() {
+      // 監聽到職日設定
+      const infoRef = ref(database, 'pgy_students/' + pgyKey + '/info');
+      onValue(infoRef, (snapshot) => {
+        const info = snapshot.val() || {};
+        if (info.startDate) {
+          document.getElementById('start-date-input').value = info.startDate;
+          calculatePgyMonth(info.startDate);
+        } else {
+          // 預設給予今日
+          const today = new Date().toISOString().split('T')[0];
+          document.getElementById('start-date-input').value = today;
+          calculatePgyMonth(today);
+        }
+      });
+
+      // 監聽評核紀錄
       const studentRef = ref(database, 'pgy_students/' + pgyKey + '/records');
       onValue(studentRef, (snapshot) => {
         const records = snapshot.val() || {};
@@ -167,6 +189,45 @@
         updateCccLineChart(records);
         updateTechBarChart(records);
       });
+    }
+
+    // 計算 PGY 訓練月份邏輯
+    window.updateStartDate = function() {
+      const startDateVal = document.getElementById('start-date-input').value;
+      if (!startDateVal) return;
+      
+      const infoRef = ref(database, 'pgy_students/' + pgyKey + '/info');
+      set(infoRef, { startDate: startDateVal, timestamp: Date.now() });
+      calculatePgyMonth(startDateVal);
+    };
+
+    function calculatePgyMonth(startDateStr) {
+      const start = new Date(startDateStr);
+      const today = new Date();
+
+      if (isNaN(start.getTime())) {
+        document.getElementById('current-pgy-month').textContent = "⏱️ 當前進度：M1";
+        return;
+      }
+
+      let yearDiff = today.getFullYear() - start.getFullYear();
+      let monthDiff = today.getMonth() - start.getMonth();
+      let totalMonths = yearDiff * 12 + monthDiff;
+
+      // 若今天日期小於到職日當月日期，代表當月未滿
+      if (today.getDate() < start.getDate()) {
+        totalMonths--;
+      }
+
+      const pgyMonthNum = totalMonths + 1; // 到職第 1 個月起算為 M1
+
+      if (pgyMonthNum <= 0) {
+        document.getElementById('current-pgy-month').textContent = "⏱️ 尚未報到 (未滿 M1)";
+      } else if (pgyMonthNum > 24) {
+        document.getElementById('current-pgy-month').textContent = `🎓 已完訓 (已受訓 ${pgyMonthNum} 個月)`;
+      } else {
+        document.getElementById('current-pgy-month').textContent = `⏱️ 目前受訓進度：M${pgyMonthNum} (第 ${pgyMonthNum} 個月)`;
+      }
     }
 
     window.handleScoreItem = function(event, type) {
@@ -396,6 +457,10 @@
 <body>
 
   <div class="action-bar">
+    <div class="date-setter">
+      📅 設定到職日：
+      <input type="date" id="start-date-input" onchange="updateStartDate()">
+    </div>
     <button class="btn" onclick="downloadPNG()">📷 一鍵下載高清 PNG 圖表</button>
     <button class="btn btn-reset" onclick="resetProgress()">🔄 清空集點紀錄</button>
   </div>
@@ -406,7 +471,10 @@
         <h1>國立臺灣大學醫學院附設醫院</h1>
         <p id="user-display-name">二年期呼吸治療師 (PGY RT) 24M 集點卡</p>
       </div>
-      <div class="source-tag">🌐 Firebase 雲端即時同步中</div>
+      <div class="meta-tag-group">
+        <div class="month-tag" id="current-pgy-month">⏱️ 計算中...</div>
+        <div class="source-tag">🌐 Firebase 雲端即時同步中</div>
+      </div>
     </div>
 
     <!-- 四大視覺化圖表儀表板 -->
