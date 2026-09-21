@@ -46,7 +46,6 @@
       border-color: #047857 !important;
     }
     
-    /* 日期選擇器圖示白化增強辨識度 */
     input[type="date"]::-webkit-calendar-picker-indicator {
       filter: invert(0.8) sepia(100%) saturate(1000%) hue-rotate(180deg);
       cursor: pointer;
@@ -55,53 +54,55 @@
 </head>
 <body class="text-slate-800 pb-12">
 
-  <!-- 頂部導覽列 Header (字體放大、樣式優化) -->
+  <!-- 頂部導覽列 Header (已調整按鈕位置與標題同一列) -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center space-x-3">
-        <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
-        <div>
-          <!-- 放大主要標題 -->
+    <div class="max-w-7xl mx-auto px-4 py-3.5 space-y-2">
+      
+      <!-- 第一列：標題 + 按鈕群 (一鍵截圖、一鍵清空、Firebase連線) -->
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center space-x-3">
+          <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
           <h1 class="font-bold text-xl md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
-          
-          <!-- 放大資訊文字、優化日期選擇器與 Mentor 輸入框 -->
-          <div class="flex flex-wrap items-center gap-3 mt-2 text-sm md:text-base text-slate-200 font-medium">
-            <div class="flex items-center gap-1">
-              <span>員編：</span>
-              <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-sky-300 font-mono w-24 focus:outline-none focus:border-sky-400 text-sm md:text-base" value="030634">
-            </div>
-            
-            <div class="flex items-center gap-1">
-              <span>Mentor：</span>
-              <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-sky-300 font-medium w-28 md:w-32 focus:outline-none focus:border-sky-400 text-sm md:text-base">
-            </div>
+        </div>
 
-            <div class="flex items-center gap-1">
-              <span>到職日：</span>
-              <input type="date" id="startDateInput" class="bg-slate-800/90 border-2 border-sky-400/80 rounded px-2.5 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 shadow-inner text-sm md:text-base" value="2025-08-01">
-            </div>
-
-            <div class="flex items-center gap-1 text-amber-300">
-              <span>預計完訓日：</span>
-              <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-sm md:text-base">2027/07/31</span>
-            </div>
-
-            <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2.5 py-0.5 rounded-full font-bold text-sm md:text-base">目前 PGY：M14</span>
-          </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs md:text-sm px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition shadow">
+            <i class="fa-solid fa-camera"></i> 一鍵截圖 PNG
+          </button>
+          <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-xs md:text-sm px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition shadow">
+            <i class="fa-solid fa-rotate-left"></i> 一鍵清空
+          </button>
+          <span class="text-xs md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2.5 py-1 rounded-full flex items-center gap-1 ml-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Firebase 即時連線
+          </span>
         </div>
       </div>
       
-      <div class="flex items-center space-x-2">
-        <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs md:text-sm px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-camera"></i> 一鍵截圖 PNG
-        </button>
-        <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-xs md:text-sm px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition">
-          <i class="fa-solid fa-rotate-left"></i> 一鍵清空
-        </button>
-        <span class="text-xs md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2.5 py-1 rounded-full flex items-center gap-1 ml-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Firebase 即時連線
-        </span>
+      <!-- 第二列：個人資訊輸入與狀態欄 -->
+      <div class="flex flex-wrap items-center gap-3 pt-1 text-sm md:text-base text-slate-200 font-medium">
+        <div class="flex items-center gap-1">
+          <span>員編：</span>
+          <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-2 py-0.5 text-sky-300 font-mono w-24 focus:outline-none focus:border-sky-400 text-sm md:text-base" value="030634">
+        </div>
+        
+        <div class="flex items-center gap-1">
+          <span>Mentor：</span>
+          <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-2 py-0.5 text-sky-300 font-medium w-28 md:w-32 focus:outline-none focus:border-sky-400 text-sm md:text-base">
+        </div>
+
+        <div class="flex items-center gap-1">
+          <span>到職日：</span>
+          <input type="date" id="startDateInput" class="bg-slate-800/90 border-2 border-sky-400/80 rounded px-2 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 shadow-inner text-sm md:text-base" value="2025-08-01">
+        </div>
+
+        <div class="flex items-center gap-1 text-amber-300">
+          <span>預計完訓日：</span>
+          <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-sm md:text-base">2027/07/31</span>
+        </div>
+
+        <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2.5 py-0.5 rounded-full font-bold text-sm md:text-base">目前 PGY：M14</span>
       </div>
+
     </div>
   </header>
 
@@ -122,10 +123,9 @@
         </div>
       </div>
 
-      <!-- 6 大圖表 (2 行 × 3 欄排列) -->
+      <!-- 6 大圖表 -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- 圖表 1 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-radar text-sky-600"></i> EPA 縱向勝任力雷達圖
@@ -138,7 +138,6 @@
           </div>
         </div>
 
-        <!-- 圖表 2 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
@@ -151,7 +150,6 @@
           </div>
         </div>
 
-        <!-- 圖表 3 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-line text-indigo-600"></i> Mini-CEX 得分趨勢圖 (1-9分)
@@ -164,7 +162,6 @@
           </div>
         </div>
 
-        <!-- 圖表 4 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-column text-amber-600"></i> CbD 病例討論成績 (60-100分)
@@ -177,7 +174,6 @@
           </div>
         </div>
 
-        <!-- 圖表 5 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-stairs text-purple-600"></i> CCC 臨床能力信賴等級 (Level 1-5)
@@ -190,7 +186,6 @@
           </div>
         </div>
 
-        <!-- 圖表 6 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-square-poll-vertical text-teal-600"></i> 技術考與學術報告成績 (80-100分)
@@ -209,7 +204,7 @@
     <!-- 下方集點區域：三階段由左而右 3 欄式 Grid 佈局 -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      <!-- 階段一: M1-M3 基礎課程 (左欄) -->
+      <!-- 階段一 -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-sky-50 border-b border-sky-100 p-4 flex justify-between items-center">
@@ -220,7 +215,6 @@
           </div>
 
           <div class="p-4 space-y-5">
-            <!-- 基礎技能課程 (5項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 基礎專業技能課程 (5項)</h4>
               <div class="space-y-1.5">
@@ -247,7 +241,6 @@
               </div>
             </div>
 
-            <!-- EPA 點數 -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔶 EPA 可信賴專業活動</h4>
               <div class="space-y-1.5">
@@ -278,7 +271,6 @@
               </div>
             </div>
 
-            <!-- 技術考與報告 (6項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第一階段技術考與報告 (6項)</h4>
               <div class="grid grid-cols-2 gap-1.5">
@@ -291,12 +283,10 @@
               </div>
             </div>
 
-            <!-- 階段一 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2">
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段一常態管考
               </h4>
-              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -305,28 +295,24 @@
                   <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50 text-[11px]">M3訪談</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="minicex_m3" data-name="M3" class="stamp-btn minicex-btn px-2.5 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m3" data-name="M3" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M3審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="ccc_m3" data-name="M3" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M3 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -344,7 +330,7 @@
         </div>
       </div>
 
-      <!-- 階段二: M4-M12 核心進階階段 (中欄) -->
+      <!-- 階段二 -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-emerald-50 border-b border-emerald-100 p-4 flex justify-between items-center">
@@ -355,7 +341,6 @@
           </div>
 
           <div class="p-4 space-y-5">
-            <!-- 核心專業課程 (5項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 核心專業課程 (5項)</h4>
               <div class="space-y-1.5">
@@ -382,7 +367,6 @@
               </div>
             </div>
 
-            <!-- EPA 點數 -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔶 EPA 可信賴專業活動</h4>
               <div class="space-y-1.5">
@@ -429,7 +413,6 @@
               </div>
             </div>
 
-            <!-- 技術考與報告 (6項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第二階段技術考與學術報告 (6項)</h4>
               <div class="grid grid-cols-2 gap-1.5">
@@ -442,12 +425,10 @@
               </div>
             </div>
 
-            <!-- 階段二 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2">
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段二常態管考
               </h4>
-              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -462,7 +443,6 @@
                   <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M12</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -471,7 +451,6 @@
                   <button data-id="minicex_m12" data-name="M12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -480,14 +459,12 @@
                   <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M9審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="ccc_m9" data-name="M9" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M9</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M9 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -505,7 +482,7 @@
         </div>
       </div>
 
-      <!-- 階段三: M13-M24 重症與兒科階段 (右欄) -->
+      <!-- 階段三 -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-purple-50 border-b border-purple-100 p-4 flex justify-between items-center">
@@ -516,7 +493,6 @@
           </div>
 
           <div class="p-4 space-y-5">
-            <!-- 高階專業課程 (9項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 高階專業課程 (9項)</h4>
               <div class="grid grid-cols-1 gap-1.5">
@@ -559,7 +535,6 @@
               </div>
             </div>
 
-            <!-- EPA 7 -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔶 EPA 可信賴專業活動</h4>
               <div class="border border-slate-200 bg-slate-50 p-2 rounded-lg flex items-center justify-between">
@@ -572,7 +547,6 @@
               </div>
             </div>
 
-            <!-- 技術考與總驗收 (3項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第三階段技術考與總驗收 (3項)</h4>
               <div class="grid grid-cols-1 gap-1.5">
@@ -582,12 +556,10 @@
               </div>
             </div>
 
-            <!-- 階段三 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2">
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段三常態管考
               </h4>
-              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -605,7 +577,6 @@
                   <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M24</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -615,7 +586,6 @@
                   <button data-id="minicex_m24" data-name="M24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M24</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -625,7 +595,6 @@
                   <button data-id="cbd_m24" data-name="M24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M24</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (半年審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -633,7 +602,6 @@
                   <button data-id="ccc_m21" data-name="M21" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M21</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M15 核心能力自評：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -721,12 +689,9 @@
     let localScores = {};
     let charts = {};
 
-    // 到職日算 PGY 月份與預計完訓日
     function calculatePgyMonth(customDateStr = null) {
       const dateInput = document.getElementById('startDateInput');
-      if (customDateStr) {
-        dateInput.value = customDateStr;
-      }
+      if (customDateStr) dateInput.value = customDateStr;
       const startDateVal = dateInput.value;
       if (!startDateVal) return;
       
@@ -737,7 +702,6 @@
       if (months > 24) months = 24;
       document.getElementById('pgyMonthBadge').innerText = `目前 PGY：M${months}`;
 
-      // 自動算 24 個月完訓日 (到職日 + 2 年 - 1 天)
       const gradDate = new Date(start);
       gradDate.setFullYear(gradDate.getFullYear() + 2);
       gradDate.setDate(gradDate.getDate() - 1);
@@ -748,7 +712,6 @@
       document.getElementById('gradDateBadge').innerText = `${yyyy}/${mm}/${dd}`;
     }
 
-    // 當修改「到職日」時同步
     document.getElementById('startDateInput').addEventListener('change', (e) => {
       const newDate = e.target.value;
       calculatePgyMonth();
@@ -756,7 +719,6 @@
       set(ref(db, `pgy_students/${pgyStudentId}/startDate`), newDate);
     });
 
-    // 當修改「Mentor」姓名時同步儲存
     document.getElementById('mentorInput').addEventListener('change', (e) => {
       const mentorName = e.target.value.trim();
       localStorage.setItem(`pgy_mentor_${pgyStudentId}`, mentorName);
@@ -770,7 +732,6 @@
     });
 
     function initCharts() {
-      // 1. EPA 多次評核雷達圖
       const epaCtx = document.getElementById('epaRadarChart').getContext('2d');
       charts.epa = new Chart(epaCtx, {
         type: 'radar',
@@ -801,7 +762,6 @@
         }
       });
 
-      // 2. SIRIPPP 七軸雷達圖
       const siriCtx = document.getElementById('siripppRadarChart').getContext('2d');
       charts.siri = new Chart(siriCtx, {
         type: 'radar',
@@ -821,7 +781,6 @@
         }
       });
 
-      // 3. Mini-CEX 趨勢圖
       const minicexCtx = document.getElementById('miniCexChart').getContext('2d');
       charts.minicex = new Chart(minicexCtx, {
         type: 'line',
@@ -844,7 +803,6 @@
         }
       });
 
-      // 4. CbD 柱狀圖
       const cbdCtx = document.getElementById('cbdChart').getContext('2d');
       charts.cbd = new Chart(cbdCtx, {
         type: 'bar',
@@ -863,7 +821,6 @@
         }
       });
 
-      // 5. CCC 階梯圖
       const cccCtx = document.getElementById('cccChart').getContext('2d');
       charts.ccc = new Chart(cccCtx, {
         type: 'line',
@@ -884,7 +841,6 @@
         }
       });
 
-      // 6. 技術考柱狀圖
       const techCtx = document.getElementById('techChart').getContext('2d');
       charts.tech = new Chart(techCtx, {
         type: 'bar',
@@ -999,7 +955,6 @@
     }
 
     function listenToFirebase() {
-      // 本地快照優先載入到職日與 Mentor
       const savedDate = localStorage.getItem(`pgy_startDate_${pgyStudentId}`);
       if (savedDate) calculatePgyMonth(savedDate);
 
