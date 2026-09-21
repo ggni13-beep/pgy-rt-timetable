@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NTUH PGY RT 24M 雙向同步評核集點卡</title>
+  <title>臺大醫院 PGY RT 24M 評核集點卡</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -109,7 +109,7 @@
             <canvas id="epaRadarChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
-            刻度：1 $\rightarrow$ 2a $\rightarrow$ 2b $\rightarrow$ 3a $\rightarrow$ 3b $\rightarrow$ 3c $\rightarrow$ 4 (🔵 Test 1 / 🟢 Test 2 / 🟣 Test 3)
+            刻度：1 → 2a → 2b → 3a → 3b → 3c → 4 (🔵 Test 1 / 🟢 Test 2 / 🟣 Test 3)
           </div>
         </div>
 
@@ -174,7 +174,7 @@
             <canvas id="techChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
-            技術考 & 學術報告 (通過標準 $\ge$ 80分)
+            技術考 & 學術報告 (通過標準 ≥ 80分)
           </div>
         </div>
 
@@ -678,7 +678,7 @@
         </div>
         <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm">
           <strong class="text-emerald-800 block mb-1">📌 人文素養與全人照護</strong>
-          • 第一年 $\ge$ 12h / 第二年 $\ge$ 6h (含人安、倫理、感染管制、高齡等)
+          • 第一年 ≥ 12h / 第二年 ≥ 6h (含人安、倫理、感染管制、高齡等)
         </div>
       </div>
     </div>
@@ -704,7 +704,7 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // 解析員編與到職日
+    // 解析員編
     const urlParams = new URLSearchParams(window.location.search);
     let pgyStudentId = urlParams.get('pgy') || '030634';
     document.getElementById('studentIdInput').value = pgyStudentId;
@@ -713,10 +713,15 @@
     let localScores = {};
     let charts = {};
 
-    // 到職日算 PGY 月份功能
-    function calculatePgyMonth() {
-      const startDateVal = document.getElementById('startDateInput').value;
+    // 到職日算 PGY 月份功能 (整合 LocalStorage 與 Firebase)
+    function calculatePgyMonth(customDateStr = null) {
+      const dateInput = document.getElementById('startDateInput');
+      if (customDateStr) {
+        dateInput.value = customDateStr;
+      }
+      const startDateVal = dateInput.value;
       if (!startDateVal) return;
+      
       const start = new Date(startDateVal);
       const now = new Date();
       let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth()) + 1;
@@ -725,14 +730,19 @@
       document.getElementById('pgyMonthBadge').innerText = `目前 PGY：M${months}`;
     }
 
-    document.getElementById('startDateInput').addEventListener('change', calculatePgyMonth);
+    // 修改到職日時同步儲存
+    document.getElementById('startDateInput').addEventListener('change', (e) => {
+      const newDate = e.target.value;
+      calculatePgyMonth();
+      localStorage.setItem(`pgy_startDate_${pgyStudentId}`, newDate);
+      set(ref(db, `pgy_students/${pgyStudentId}/startDate`), newDate);
+    });
+
     document.getElementById('studentIdInput').addEventListener('change', (e) => {
       pgyStudentId = e.target.value.trim() || '030634';
       studentRef = ref(db, `pgy_students/${pgyStudentId}`);
       listenToFirebase();
     });
-
-    calculatePgyMonth();
 
     function initCharts() {
       // 1. EPA 縱向雷達圖
@@ -964,9 +974,24 @@
     }
 
     function listenToFirebase() {
+      // 優先讀取 LocalStorage 快速顯示
+      const savedDate = localStorage.getItem(`pgy_startDate_${pgyStudentId}`);
+      if (savedDate) {
+        calculatePgyMonth(savedDate);
+      }
+
       onValue(studentRef, (snapshot) => {
         const data = snapshot.val();
         localScores = (data && data.scores) ? data.scores : {};
+        
+        // 讀取並同步 Firebase 到職日
+        if (data && data.startDate) {
+          calculatePgyMonth(data.startDate);
+          localStorage.setItem(`pgy_startDate_${pgyStudentId}`, data.startDate);
+        } else {
+          calculatePgyMonth();
+        }
+        
         updateUI();
       });
     }
@@ -1043,8 +1068,11 @@
 
     window.resetAllScores = () => {
       if (confirm(`確定要清空員編 ${pgyStudentId} 的所有評核點數與紀錄嗎？此動作無法復原。`)) {
-        remove(ref(db, `pgy_students/${pgyStudentId}/scores`)).then(() => {
+        remove(ref(db, `pgy_students/${pgyStudentId}`)).then(() => {
           localScores = {};
+          localStorage.removeItem(`pgy_startDate_${pgyStudentId}`);
+          document.getElementById('startDateInput').value = '2025-08-01';
+          calculatePgyMonth();
           updateUI();
           alert("已成功清空所有紀錄！");
         });
