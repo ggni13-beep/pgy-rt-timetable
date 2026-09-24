@@ -46,7 +46,6 @@
       border-color: #047857 !important;
     }
     
-    /* 日期選擇器圖示白化增強辨識度 */
     input[type="date"]::-webkit-calendar-picker-indicator {
       filter: invert(0.8) sepia(100%) saturate(1000%) hue-rotate(180deg);
       cursor: pointer;
@@ -55,16 +54,13 @@
 </head>
 <body class="text-slate-800 pb-12">
 
-  <!-- 頂部導覽列 Header (字體放大、樣式優化) -->
+  <!-- 頂部導覽列 Header -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
         <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
         <div>
-          <!-- 放大主要標題 -->
           <h1 class="font-bold text-xl md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
-          
-          <!-- 放大資訊文字、優化日期選擇器與 Mentor 輸入框 -->
           <div class="flex flex-wrap items-center gap-3 mt-2 text-sm md:text-base text-slate-200 font-medium">
             <div class="flex items-center gap-1">
               <span>員編：</span>
@@ -125,7 +121,7 @@
       <!-- 6 大圖表 (2 行 × 3 欄排列) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- 圖表 1 -->
+        <!-- 圖表 1: EPA 雷達圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-radar text-sky-600"></i> EPA 縱向勝任力雷達圖
@@ -138,7 +134,7 @@
           </div>
         </div>
 
-        <!-- 圖表 2 (已改為折線圖) -->
+        <!-- 圖表 2: SIRIPPP 七軸能力折線圖 (已按要求改為折線圖) -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-line text-emerald-600"></i> SIRIPPP 七軸能力折線圖
@@ -151,7 +147,7 @@
           </div>
         </div>
 
-        <!-- 圖表 3 -->
+        <!-- 圖表 3: Mini-CEX 趨勢圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-line text-indigo-600"></i> Mini-CEX 得分趨勢圖 (1-9分)
@@ -164,7 +160,7 @@
           </div>
         </div>
 
-        <!-- 圖表 4 -->
+        <!-- 圖表 4: CbD 柱狀圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-column text-amber-600"></i> CbD 病例討論成績 (60-100分)
@@ -177,7 +173,7 @@
           </div>
         </div>
 
-        <!-- 圖表 5 -->
+        <!-- 圖表 5: CCC 階梯圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-stairs text-purple-600"></i> CCC 臨床能力信賴等級 (Level 1-5)
@@ -190,7 +186,7 @@
           </div>
         </div>
 
-        <!-- 圖表 6 -->
+        <!-- 圖表 6: 技術考柱狀圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-square-poll-vertical text-teal-600"></i> 技術考與學術報告成績 (80-100分)
@@ -278,7 +274,7 @@
               </div>
             </div>
 
-            <!-- 技術考與報告 (6項，含呼吸器裝置拆分) -->
+            <!-- 技術考與報告 (6項) -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第一階段技術考與報告 (6項)</h4>
               <div class="grid grid-cols-2 gap-1.5">
@@ -912,7 +908,6 @@
     let localScores = {};
     let charts = {};
 
-    // 到職日算 PGY 月份與預計完訓日
     function calculatePgyMonth(customDateStr = null) {
       const dateInput = document.getElementById('startDateInput');
       if (customDateStr) {
@@ -1115,9 +1110,8 @@
       }
       charts.epa.update();
 
-      // SIRIPPP 折線圖數據計算 (以目前點選的分數平均或直接對應，這裡將各面向自評與導師數據帶入)
+      // SIRIPPP 折線圖數據計算 (自評與 4 位導師)
       const siriAspects = ['s', 'i1', 'r', 'i2', 'p1', 'p2', 'p3'];
-      // 收集最近或 M21/目前有填寫的自評與各導師分數繪製折線
       const activeSiriMonth = ['m21', 'm15', 'm9', 'm3'].find(m => siriAspects.some(a => localScores[`siri_${m}_${a}`])) || 'm3';
       
       const selfData = siriAspects.map(a => parseFloat(localScores[`siri_${activeSiriMonth}_${a}`]) || null);
