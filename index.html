@@ -25,7 +25,7 @@
     .stamp-btn:hover { transform: translateY(-1px); }
     .stamp-btn.completed {
       background-color: #10b981 !important;
-      color: white !important;
+      color: #1e3a8a !important;
       border-color: #059669 !important;
     }
     .sub-stamp-btn {
@@ -970,11 +970,14 @@
         
         // 針對主課程按鈕：保持左側主題名稱不變，僅切換右側「待完成 / 完成」狀態標籤
         const statusTagSpan = el.querySelector('.status-tag');
+        const courseTextSpan = el.querySelector('.course-text');
 
         if (val) {
           el.classList.add('completed');
+          if (courseTextSpan) courseTextSpan.style.color = '#1e3a8a';
           if (statusTagSpan) {
             statusTagSpan.innerText = "完成";
+            statusTagSpan.style.color = "#1e3a8a";
           } else if (el.classList.contains('score-btn') || el.classList.contains('epa-btn') || 
               el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn') ||
               el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
@@ -983,8 +986,10 @@
           }
         } else {
           el.classList.remove('completed');
+          if (courseTextSpan) courseTextSpan.style.color = '';
           if (statusTagSpan) {
             statusTagSpan.innerText = "待完成";
+            statusTagSpan.style.color = "";
           } else if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
             el.innerText = el.getAttribute('data-name');
           }
