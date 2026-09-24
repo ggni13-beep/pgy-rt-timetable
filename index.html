@@ -261,18 +261,46 @@
               </div>
             </div>
 
-            <!-- 階段一 常態管考 -->
-            <div class="border-t border-slate-100 pt-3 space-y-2">
+            <!-- 階段一 常態管考 (分開獨立四項) -->
+            <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段一常態管考</h4>
-              <div class="flex flex-wrap gap-1.5 text-xs">
-                <button data-id="m_m1" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M1訪談</button>
-                <button data-id="m_m2" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M2訪談</button>
-                <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M3訪談</button>
-                <button data-id="ccc_m3" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M3</button>
-                <button data-id="minicex_m3" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M3(1-9)</button>
-                <button data-id="cbd_m3" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M3(60-100)</button>
+              
+              <!-- 1. 訪談 -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="m_m1" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M1</button>
+                  <button data-id="m_m2" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M2</button>
+                  <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M3</button>
+                </div>
               </div>
-              <div class="space-y-1 pt-1">
+
+              <!-- 2. CCC -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="ccc_m3" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M3</button>
+                </div>
+              </div>
+
+              <!-- 3. Mini-CEX -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="minicex_m3" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M3</button>
+                </div>
+              </div>
+
+              <!-- 4. CbD -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="cbd_m3" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M3</button>
+                </div>
+              </div>
+
+              <!-- SIRIPPP M3 -->
+              <div class="space-y-1 pt-1 border-t border-slate-100">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M3 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
                   <button data-id="siri_m3_s" data-name="S" class="sub-stamp-btn siri-btn">S</button>
@@ -296,6 +324,7 @@
                   <button data-id="m1_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -394,30 +423,56 @@
               </div>
             </div>
 
-            <!-- 階段二 常態管考 -->
-            <div class="border-t border-slate-100 pt-3 space-y-2">
+            <!-- 階段二 常態管考 (分開獨立四項) -->
+            <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段二常態管考</h4>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="m_m4" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M4</button>
-                <button data-id="m_m5" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M5</button>
-                <button data-id="m_m6" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M6</button>
-                <button data-id="m_m7" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M7</button>
-                <button data-id="m_m8" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M8</button>
-                <button data-id="m_m9" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M9</button>
-                <button data-id="m_m10" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M10</button>
-                <button data-id="m_m11" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M11</button>
-                <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M12</button>
-                <button data-id="ccc_m9" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M9</button>
+              
+              <!-- 1. 訪談 -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="m_m4" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M4</button>
+                  <button data-id="m_m5" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M5</button>
+                  <button data-id="m_m6" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M6</button>
+                  <button data-id="m_m7" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M7</button>
+                  <button data-id="m_m8" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M8</button>
+                  <button data-id="m_m9" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M9</button>
+                  <button data-id="m_m10" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M10</button>
+                  <button data-id="m_m11" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M11</button>
+                  <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M12</button>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="minicex_m6" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M6</button>
-                <button data-id="minicex_m9" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M9</button>
-                <button data-id="minicex_m12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M12</button>
-                <button data-id="cbd_m6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M6</button>
-                <button data-id="cbd_m9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M9</button>
-                <button data-id="cbd_m12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M12</button>
+
+              <!-- 2. CCC -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="ccc_m9" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M9</button>
+                </div>
               </div>
-              <div class="space-y-1 pt-1">
+
+              <!-- 3. Mini-CEX -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="minicex_m6" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M6</button>
+                  <button data-id="minicex_m9" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M9</button>
+                  <button data-id="minicex_m12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M12</button>
+                </div>
+              </div>
+
+              <!-- 4. CbD -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="cbd_m6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M6</button>
+                  <button data-id="cbd_m9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M9</button>
+                  <button data-id="cbd_m12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M12</button>
+                </div>
+              </div>
+
+              <!-- SIRIPPP M9 -->
+              <div class="space-y-1 pt-1 border-t border-slate-100">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M9 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
                   <button data-id="siri_m9_s" data-name="S" class="sub-stamp-btn siri-btn">S</button>
@@ -441,6 +496,7 @@
                   <button data-id="m1_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -514,34 +570,58 @@
               </div>
             </div>
 
-            <!-- 階段三 常態管考 -->
-            <div class="border-t border-slate-100 pt-3 space-y-2">
+            <!-- 階段三 常態管考 (分開獨立四項) -->
+            <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段三常態管考</h4>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="m_m13" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M13</button>
-                <button data-id="m_m14" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M14</button>
-                <button data-id="m_m15" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M15</button>
-                <button data-id="m_m16" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M16</button>
-                <button data-id="m_m17" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M17</button>
-                <button data-id="m_m18" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M18</button>
-                <button data-id="m_m19" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M19</button>
-                <button data-id="m_m20" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M20</button>
-                <button data-id="m_m21" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M21</button>
-                <button data-id="m_m22" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M22</button>
-                <button data-id="m_m23" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M23</button>
-                <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M24</button>
-                <button data-id="ccc_m15" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M15</button>
-                <button data-id="ccc_m21" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M21</button>
+              
+              <!-- 1. 訪談 -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="m_m13" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M13</button>
+                  <button data-id="m_m14" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M14</button>
+                  <button data-id="m_m15" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M15</button>
+                  <button data-id="m_m16" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M16</button>
+                  <button data-id="m_m17" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M17</button>
+                  <button data-id="m_m18" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M18</button>
+                  <button data-id="m_m19" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M19</button>
+                  <button data-id="m_m20" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M20</button>
+                  <button data-id="m_m21" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M21</button>
+                  <button data-id="m_m22" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M22</button>
+                  <button data-id="m_m23" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M23</button>
+                  <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M24</button>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="minicex_m15" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M15</button>
-                <button data-id="minicex_m18" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M18</button>
-                <button data-id="minicex_m21" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M21</button>
-                <button data-id="minicex_m24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M24</button>
-                <button data-id="cbd_m15" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M15</button>
-                <button data-id="cbd_m18" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M18</button>
-                <button data-id="cbd_m21" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M21</button>
-                <button data-id="cbd_m24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M24</button>
+
+              <!-- 2. CCC -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="ccc_m15" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M15</button>
+                  <button data-id="ccc_m21" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M21</button>
+                </div>
+              </div>
+
+              <!-- 3. Mini-CEX -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="minicex_m15" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M15</button>
+                  <button data-id="minicex_m18" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M18</button>
+                  <button data-id="minicex_m21" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M21</button>
+                  <button data-id="minicex_m24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M24</button>
+                </div>
+              </div>
+
+              <!-- 4. CbD -->
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <button data-id="cbd_m15" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M15</button>
+                  <button data-id="cbd_m18" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M18</button>
+                  <button data-id="cbd_m21" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M21</button>
+                  <button data-id="cbd_m24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M24</button>
+                </div>
               </div>
               
               <!-- M15 SIRIPPP -->
