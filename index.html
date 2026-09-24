@@ -25,8 +25,9 @@
     .stamp-btn:hover { transform: translateY(-1px); }
     .stamp-btn.completed {
       background-color: #10b981 !important;
-      color: white !important;
+      color: #1e3a8a !important;
       border-color: #059669 !important;
+      font-weight: 700;
     }
     .sub-stamp-btn {
       padding: 2px 6px;
@@ -56,7 +57,6 @@
   <!-- 頂部導覽列 Header -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3.5 space-y-2">
-      <!-- 第一列：標題 + 按鈕群 -->
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center space-x-3">
           <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
@@ -75,7 +75,6 @@
         </div>
       </div>
       
-      <!-- 第二列：個人資訊輸入與狀態欄 -->
       <div class="flex flex-wrap items-center gap-3 pt-1 text-sm md:text-base text-slate-200 font-medium">
         <div class="flex items-center gap-1">
           <span>員編：</span>
@@ -115,7 +114,7 @@
         </div>
       </div>
 
-      <!-- 6 大圖表區：改為 3 欄式配置，形成上三圖、下三圖 (2列 × 3欄) -->
+      <!-- 6 大圖表區 (3欄 × 2列) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- 1. EPA 縱向勝任力雷達圖 -->
@@ -131,7 +130,7 @@
           </div>
         </div>
 
-        <!-- 2. SIRIPPP 七軸能力年輪圖 (帶上方月份選擇方框按鈕) -->
+        <!-- 2. SIRIPPP 七軸能力年輪圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <div class="flex flex-col gap-1.5 mb-1">
             <h3 class="font-bold text-sm text-slate-700 flex items-center gap-2">
@@ -149,7 +148,7 @@
           </div>
           <div class="text-[11px] text-slate-500 mt-1 text-center flex justify-center gap-3">
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-blue-500 rounded-sm"></span> PGY自評</span>
-            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-orange-500 rounded-sm"></span> 導師評分</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-orange-500 rounded-sm"></span> 臨床導師評分</span>
           </div>
         </div>
 
@@ -228,23 +227,23 @@
               <div class="space-y-1.5">
                 <button data-id="c1_1" data-label="基本氧氣與溼氣噴霧治療" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
                   <span class="text-xs font-bold text-slate-700">基本氧氣與溼氣噴霧治療</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c1_2" data-label="低血氧/高二氧化碳/ABG" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
                   <span class="text-xs font-bold text-slate-700">低血氧/高二氧化碳/ABG</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c1_3" data-label="Auto-PEEP及處置" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
                   <span class="text-xs font-bold text-slate-700">Auto-PEEP及處置</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c1_4" data-label="呼吸系統身體評估" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
                   <span class="text-xs font-bold text-slate-700">呼吸系統身體評估</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c1_5" data-label="VPN登錄與健保事宜" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
                   <span class="text-xs font-bold text-slate-700">VPN登錄與健保事宜</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
               </div>
             </div>
@@ -294,13 +293,31 @@
             <!-- 階段一 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2.5">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段一常態管考</h4>
-              <div class="flex flex-wrap gap-1.5 text-xs">
-                <button data-id="m_m1" data-name="M1" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M1訪談</button>
-                <button data-id="m_m2" data-name="M2" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M2訪談</button>
-                <button data-id="m_m3" data-name="M3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M3訪談</button>
-                <button data-id="ccc_m3" data-name="CCC M3" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M3</button>
-                <button data-id="minicex_m3" data-name="CEX M3" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">MiniCEX M3</button>
-                <button data-id="cbd_m3" data-name="CbD M3" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M3</button>
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="m_m1" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M1訪談</button>
+                  <button data-id="m_m2" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M2訪談</button>
+                  <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M3訪談</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (1-9分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="minicex_m3" data-name="M3" class="stamp-btn minicex-btn px-2.5 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M3</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="cbd_m3" data-name="M3" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M3</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M3審查)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="ccc_m3" data-name="M3" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M3</button>
+                </div>
               </div>
               <div class="space-y-1 pt-1 bg-slate-50/80 p-2 rounded-lg border border-slate-200">
                 <span class="text-[11px] font-bold text-sky-700 block">SIRIPPP M3 核心能力自評：</span>
@@ -315,13 +332,13 @@
                 </div>
                 <span class="text-[11px] font-bold text-orange-700 block mt-1">SIRIPPP M3 臨床導師評分：</span>
                 <div class="flex items-center gap-1 text-xs">
-                  <button data-id="mentor_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="mentor_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="mentor_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="m1_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="m1_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
             </div>
@@ -345,23 +362,23 @@
               <div class="space-y-1.5">
                 <button data-id="c2_1" data-label="成人呼吸生理與胸腔疾病" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
                   <span class="text-xs font-bold text-slate-700">成人呼吸生理與胸腔疾病</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c2_2" data-label="小兒氣道照護與呼吸生理" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
                   <span class="text-xs font-bold text-slate-700">小兒氣道照護與呼吸生理</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c2_3" data-label="呼吸器分類與設定調整" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
                   <span class="text-xs font-bold text-slate-700">呼吸器分類與設定調整</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c2_4" data-label="呼吸器脫離與 ATC 應用" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
                   <span class="text-xs font-bold text-slate-700">呼吸器脫離與 ATC 應用</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c2_5" data-label="BLS/ACLS 考照通過" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2.5 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
                   <span class="text-xs font-bold text-slate-700">BLS/ACLS 考照通過</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
               </div>
             </div>
@@ -427,20 +444,41 @@
             <!-- 階段二 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2.5">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段二常態管考</h4>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="m_m4" data-name="M4" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M4</button>
-                <button data-id="m_m6" data-name="M6" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M6</button>
-                <button data-id="m_m9" data-name="M9" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M9</button>
-                <button data-id="m_m12" data-name="M12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M12</button>
-                <button data-id="ccc_m9" data-name="CCC M9" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M9</button>
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="m_m4" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M4</button>
+                  <button data-id="m_m5" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M5</button>
+                  <button data-id="m_m6" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M6</button>
+                  <button data-id="m_m7" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M7</button>
+                  <button data-id="m_m8" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M8</button>
+                  <button data-id="m_m9" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M9</button>
+                  <button data-id="m_m10" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M10</button>
+                  <button data-id="m_m11" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M11</button>
+                  <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M12</button>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="minicex_m6" data-name="CEX M6" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M6</button>
-                <button data-id="minicex_m9" data-name="CEX M9" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M9</button>
-                <button data-id="minicex_m12" data-name="CEX M12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M12</button>
-                <button data-id="cbd_m6" data-name="CbD M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M6</button>
-                <button data-id="cbd_m9" data-name="CbD M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M9</button>
-                <button data-id="cbd_m12" data-name="CbD M12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M12</button>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (1-9分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="minicex_m6" data-name="M6" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M6</button>
+                  <button data-id="minicex_m9" data-name="M9" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M9</button>
+                  <button data-id="minicex_m12" data-name="M12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M12</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="cbd_m6" data-name="M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M6</button>
+                  <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
+                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M9審查)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="ccc_m9" data-name="M9" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M9</button>
+                </div>
               </div>
               <div class="space-y-1 pt-1 bg-slate-50/80 p-2 rounded-lg border border-slate-200">
                 <span class="text-[11px] font-bold text-sky-700 block">SIRIPPP M9 核心能力自評：</span>
@@ -455,13 +493,13 @@
                 </div>
                 <span class="text-[11px] font-bold text-orange-700 block mt-1">SIRIPPP M9 臨床導師評分：</span>
                 <div class="flex items-center gap-1 text-xs">
-                  <button data-id="mentor_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="mentor_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="mentor_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="m1_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="m1_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
             </div>
@@ -485,39 +523,39 @@
               <div class="grid grid-cols-1 gap-1.5">
                 <button data-id="c3_1" data-label="手術前後呼吸照護" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">手術前後呼吸照護</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_2" data-label="COPD 照護與肺復健" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">COPD 照護與肺復健</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_3" data-label="ARDS 呼吸照護與策略" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">ARDS 呼吸照護與策略</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_4" data-label="VAP 預防與照護" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">VAP 預防與照護</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_5" data-label="呼吸功能改善與訓練" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">呼吸功能改善與訓練</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_6" data-label="HFOV 專題與實務" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">HFOV 專題與實務</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_7" data-label="iNO 專題與實務" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">iNO 專題與實務</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_8" data-label="Prone Position 俯臥照護" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">Prone Position 俯臥照護</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
                 <button data-id="c3_9" data-label="Lung Recruitment 肺招募術" class="stamp-btn course-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
                   <span class="text-xs font-bold text-slate-700">Lung Recruitment 肺招募術</span>
-                  <span class="badge-text text-[10px] text-slate-400">未完成</span>
+                  <span class="badge-text text-[10px] text-slate-400">待完成</span>
                 </button>
               </div>
             </div>
@@ -546,17 +584,47 @@
             <!-- 階段三 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-2.5">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段三常態管考</h4>
-              <div class="flex flex-wrap gap-1 text-xs">
-                <button data-id="ccc_m15" data-name="CCC M15" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M15</button>
-                <button data-id="ccc_m21" data-name="CCC M21" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M21</button>
-                <button data-id="minicex_m15" data-name="CEX M15" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M15</button>
-                <button data-id="minicex_m18" data-name="CEX M18" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M18</button>
-                <button data-id="minicex_m21" data-name="CEX M21" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M21</button>
-                <button data-id="minicex_m24" data-name="CEX M24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M24</button>
-                <button data-id="cbd_m15" data-name="CbD M15" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M15</button>
-                <button data-id="cbd_m18" data-name="CbD M18" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M18</button>
-                <button data-id="cbd_m21" data-name="CbD M21" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M21</button>
-                <button data-id="cbd_m24" data-name="CbD M24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M24</button>
+              <div class="space-y-1">
+                <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="m_m13" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M13</button>
+                  <button data-id="m_m14" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M14</button>
+                  <button data-id="m_m15" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M15</button>
+                  <button data-id="m_m16" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M16</button>
+                  <button data-id="m_m17" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M17</button>
+                  <button data-id="m_m18" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M18</button>
+                  <button data-id="m_m19" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M19</button>
+                  <button data-id="m_m20" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M20</button>
+                  <button data-id="m_m21" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M21</button>
+                  <button data-id="m_m22" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M22</button>
+                  <button data-id="m_m23" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M23</button>
+                  <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M24</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (1-9分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="minicex_m15" data-name="M15" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M15</button>
+                  <button data-id="minicex_m18" data-name="M18" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M18</button>
+                  <button data-id="minicex_m21" data-name="M21" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M21</button>
+                  <button data-id="minicex_m24" data-name="M24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M24</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (60-100分)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="cbd_m15" data-name="M15" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M15</button>
+                  <button data-id="cbd_m18" data-name="M18" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M18</button>
+                  <button data-id="cbd_m21" data-name="M21" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M21</button>
+                  <button data-id="cbd_m24" data-name="M24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M24</button>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (半年審查)：</span>
+                <div class="flex flex-wrap gap-1 text-xs">
+                  <button data-id="ccc_m15" data-name="M15" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M15</button>
+                  <button data-id="ccc_m21" data-name="M21" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M21</button>
+                </div>
               </div>
 
               <!-- M15 SIRIPPP -->
@@ -573,13 +641,13 @@
                 </div>
                 <span class="text-[11px] font-bold text-orange-700 block mt-1">SIRIPPP M15 導師評分：</span>
                 <div class="flex items-center gap-1 text-xs">
-                  <button data-id="mentor_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="mentor_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="mentor_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="m1_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="m1_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
 
@@ -597,13 +665,13 @@
                 </div>
                 <span class="text-[11px] font-bold text-orange-700 block mt-1">SIRIPPP M21 導師評分：</span>
                 <div class="flex items-center gap-1 text-xs">
-                  <button data-id="mentor_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="mentor_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="mentor_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="mentor_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="mentor_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="m1_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="m1_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="m1_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="m1_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
 
@@ -743,7 +811,7 @@
         }
       });
 
-      // 2. SIRIPPP 七軸雷達圖 (雙線：PGY自評 vs 導師評分，支援 0.5 級距與小數點分數差距)
+      // 2. SIRIPPP 七軸雷達圖
       const siriCtx = document.getElementById('siripppRadarChart').getContext('2d');
       charts.siri = new Chart(siriCtx, {
         type: 'radar',
@@ -761,9 +829,7 @@
             r: { 
               min: 0, 
               max: 5, 
-              ticks: { 
-                stepSize: 0.5 // 設定級距為 0.5 以反映實際小數點分數差距
-              } 
+              ticks: { stepSize: 0.5 } 
             } 
           }
         }
@@ -852,7 +918,6 @@
       });
     }
 
-    // 切換 SIRIPPP 月份 (上方方框按鈕)
     window.switchSiriMonth = function(month) {
       activeSiriMonth = month;
       ['m3', 'm9', 'm15', 'm21'].forEach(m => {
@@ -872,7 +937,7 @@
       if (!charts.siri) return;
       const siriAspects = ['s', 'i1', 'r', 'i2', 'p1', 'p2', 'p3'];
       const selfData = siriAspects.map(a => parseFloat(localScores[`siri_${activeSiriMonth}_${a}`]) || 0);
-      const mentorData = siriAspects.map(a => parseFloat(localScores[`mentor_siri_${activeSiriMonth}_${a}`]) || 0);
+      const mentorData = siriAspects.map(a => parseFloat(localScores[`m1_siri_${activeSiriMonth}_${a}`]) || 0);
 
       charts.siri.data.datasets[0].data = selfData;
       charts.siri.data.datasets[1].data = mentorData;
@@ -880,7 +945,6 @@
     }
 
     function updateCharts() {
-      const epaKeys = ['epa1', 'epa3', 'epa5', 'epa6', 'epa7', 'epa8', 'epa9', 'epa10', 'epa11'];
       const mapEpaLevelToNum = (val) => {
         if (!val) return 0;
         const str = String(val).toLowerCase();
@@ -969,7 +1033,7 @@
           el.classList.add('completed');
           if (el.classList.contains('course-btn')) {
             const label = el.getAttribute('data-label');
-            el.innerHTML = `<span class="text-xs font-bold text-white">${label}</span><span class="badge-text text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded">已完成</span>`;
+            el.innerHTML = `<span class="text-xs font-bold text-[#1e3a8a]">${label}</span><span class="badge-text text-[10px] bg-white/40 text-[#1e3a8a] px-1.5 py-0.5 rounded font-bold">完成</span>`;
           }
           else if (el.classList.contains('score-btn') || el.classList.contains('epa-btn') || 
                    el.classList.contains('ccc-btn') || el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
@@ -984,7 +1048,7 @@
           el.classList.remove('completed');
           if (el.classList.contains('course-btn')) {
             const label = el.getAttribute('data-label');
-            el.innerHTML = `<span class="text-xs font-bold text-slate-700">${label}</span><span class="badge-text text-[10px] text-slate-400">未完成</span>`;
+            el.innerHTML = `<span class="text-xs font-bold text-slate-700">${label}</span><span class="badge-text text-[10px] text-slate-400">待完成</span>`;
           } else if (el.hasAttribute('data-name')) {
             el.innerText = el.getAttribute('data-name');
           }
@@ -1031,7 +1095,7 @@
           }
           else if (el.classList.contains('course-btn')) {
             if (localScores[id]) delete localScores[id];
-            else localScores[id] = "已完成";
+            else localScores[id] = "完成";
           }
           else if (el.classList.contains('minicex-btn')) {
             const input = prompt("請輸入 Mini-CEX 評量分數 (1 ~ 9 分)：", currentVal || "6");
