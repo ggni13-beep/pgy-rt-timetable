@@ -54,11 +54,11 @@
 </head>
 <body class="text-slate-800 pb-12">
 
-  <!-- 頂部導覽列 Header (已調整按鈕位置與標題同一列) -->
+  <!-- 頂部導覽列 Header -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3.5 space-y-2">
       
-      <!-- 第一列：標題 + 按鈕群 (一鍵截圖、一鍵清空、Firebase連線) -->
+      <!-- 第一列：標題 + 按鈕群 -->
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center space-x-3">
           <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
@@ -204,7 +204,7 @@
     <!-- 下方集點區域：三階段由左而右 3 欄式 Grid 佈局 -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      <!-- 階段一 -->
+      <!-- 階段一: M1-M3 基礎課程 (左欄) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-sky-50 border-b border-sky-100 p-4 flex justify-between items-center">
@@ -287,6 +287,7 @@
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段一常態管考
               </h4>
+              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -295,24 +296,28 @@
                   <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50 text-[11px]">M3訪談</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="minicex_m3" data-name="M3" class="stamp-btn minicex-btn px-2.5 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m3" data-name="M3" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M3審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="ccc_m3" data-name="M3" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M3</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M3 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -325,12 +330,27 @@
                   <button data-id="siri_m3_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
+
+              <!-- 新增：M3 臨床導師評分 -->
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M3 核心能力-臨床導師評分 (1-5分)：</span>
+                <div class="flex items-center gap-1 text-xs">
+                  <button data-id="mentor_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="mentor_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="mentor_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段二 -->
+      <!-- 階段二: M4-M12 核心進階階段 (中欄) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-emerald-50 border-b border-emerald-100 p-4 flex justify-between items-center">
@@ -429,6 +449,7 @@
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段二常態管考
               </h4>
+              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -443,6 +464,7 @@
                   <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M12</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -451,20 +473,23 @@
                   <button data-id="minicex_m12" data-name="M12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m6" data-name="M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M6</button>
                   <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
-                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
+                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (M9審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="ccc_m9" data-name="M9" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M9</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M9 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -477,12 +502,27 @@
                   <button data-id="siri_m9_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
+
+              <!-- 新增：M9 臨床導師評分 -->
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M9 核心能力-臨床導師評分 (1-5分)：</span>
+                <div class="flex items-center gap-1 text-xs">
+                  <button data-id="mentor_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="mentor_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="mentor_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段三 -->
+      <!-- 階段三: M13-M24 重症與兒科階段 (右欄) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
         <div>
           <div class="bg-purple-50 border-b border-purple-100 p-4 flex justify-between items-center">
@@ -560,6 +600,7 @@
               <h4 class="font-semibold text-xs text-slate-500 uppercase flex items-center gap-1">
                 <i class="fa-solid fa-thumbtack text-rose-500"></i> 📌 階段三常態管考
               </h4>
+              
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-slate-600">導師生活輔導訪談 (每月)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -577,6 +618,7 @@
                   <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50 text-[11px]">M24</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-indigo-700">Mini-CEX 演練評量 (每3月, 1-9分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -586,6 +628,7 @@
                   <button data-id="minicex_m24" data-name="M24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-indigo-50/50 text-indigo-800 text-[11px] font-bold">M24</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (每3月, 60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -595,6 +638,7 @@
                   <button data-id="cbd_m24" data-name="M24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M24</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-purple-700">CCC 討論會 (半年審查, Level 1-5)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -602,6 +646,7 @@
                   <button data-id="ccc_m21" data-name="M21" class="stamp-btn ccc-btn px-2.5 py-0.5 border rounded bg-purple-50/50 text-purple-800 text-[11px] font-bold">M21</button>
                 </div>
               </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M15 核心能力自評：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -614,6 +659,21 @@
                   <button data-id="siri_m15_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
+
+              <!-- 新增：M15 臨床導師評分 -->
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M15 核心能力-臨床導師評分 (1-5分)：</span>
+                <div class="flex items-center gap-1 text-xs">
+                  <button data-id="mentor_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="mentor_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="mentor_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                </div>
+              </div>
+
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M21 核心能力自評：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -626,6 +686,21 @@
                   <button data-id="siri_m21_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
+
+              <!-- 新增：M21 臨床導師評分 -->
+              <div class="space-y-1 pt-1">
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M21 核心能力-臨床導師評分 (1-5分)：</span>
+                <div class="flex items-center gap-1 text-xs">
+                  <button data-id="mentor_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                  <button data-id="mentor_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                  <button data-id="mentor_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                  <button data-id="mentor_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  <button data-id="mentor_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -732,6 +807,7 @@
     });
 
     function initCharts() {
+      // 1. EPA 雷達圖
       const epaCtx = document.getElementById('epaRadarChart').getContext('2d');
       charts.epa = new Chart(epaCtx, {
         type: 'radar',
@@ -762,6 +838,7 @@
         }
       });
 
+      // 2. SIRIPPP 年輪圖
       const siriCtx = document.getElementById('siripppRadarChart').getContext('2d');
       charts.siri = new Chart(siriCtx, {
         type: 'radar',
@@ -781,6 +858,7 @@
         }
       });
 
+      // 3. Mini-CEX 趨勢圖
       const minicexCtx = document.getElementById('miniCexChart').getContext('2d');
       charts.minicex = new Chart(minicexCtx, {
         type: 'line',
@@ -803,6 +881,7 @@
         }
       });
 
+      // 4. CbD 柱狀圖
       const cbdCtx = document.getElementById('cbdChart').getContext('2d');
       charts.cbd = new Chart(cbdCtx, {
         type: 'bar',
@@ -821,6 +900,7 @@
         }
       });
 
+      // 5. CCC 階梯圖
       const cccCtx = document.getElementById('cccChart').getContext('2d');
       charts.ccc = new Chart(cccCtx, {
         type: 'line',
@@ -841,6 +921,7 @@
         }
       });
 
+      // 6. 技術考柱狀圖
       const techCtx = document.getElementById('techChart').getContext('2d');
       charts.tech = new Chart(techCtx, {
         type: 'bar',
@@ -935,8 +1016,8 @@
             el.innerText = `${name} (${val}分)`;
           }
           else if (el.classList.contains('epa-btn') || el.classList.contains('ccc-btn') || 
-                   el.classList.contains('siri-btn') || el.classList.contains('minicex-btn') || 
-                   el.classList.contains('cbd-btn')) {
+                   el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn') || 
+                   el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
             const name = el.getAttribute('data-name');
             el.innerText = `${name} (${val}分)`;
           }
@@ -1033,7 +1114,7 @@
               else alert("請輸入 60 到 100 之間的分數");
             } else if (input === "") delete localScores[id];
           }
-          else if (el.classList.contains('ccc-btn') || el.classList.contains('siri-btn')) {
+          else if (el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
             const input = prompt("請輸入評核分數 / Level (1 ~ 5 分)：", currentVal || "3");
             if (input !== null && input.trim() !== "") {
               const score = parseFloat(input.trim());
