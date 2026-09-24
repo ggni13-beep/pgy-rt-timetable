@@ -113,16 +113,25 @@
           </div>
         </div>
 
-        <!-- 圖表 2: SIRIPPP 七軸能力年輪圖 -->
+        <!-- 圖表 2: SIRIPPP 七軸能力年輪圖 (雙線對比：PGY自評 vs 導師評分，0.5級距) -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
-          </h3>
-          <div class="h-64 relative">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-sm text-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
+            </h3>
+            <div class="flex gap-1">
+              <button onclick="switchSiriMonth('m3')" id="btn_siri_m3" class="px-2 py-0.5 text-[10px] font-bold bg-sky-600 text-white rounded transition">M3</button>
+              <button onclick="switchSiriMonth('m9')" id="btn_siri_m9" class="px-2 py-0.5 text-[10px] font-bold bg-slate-200 text-slate-700 rounded transition">M9</button>
+              <button onclick="switchSiriMonth('m15')" id="btn_siri_m15" class="px-2 py-0.5 text-[10px] font-bold bg-slate-200 text-slate-700 rounded transition">M15</button>
+              <button onclick="switchSiriMonth('m21')" id="btn_siri_m21" class="px-2 py-0.5 text-[10px] font-bold bg-slate-200 text-slate-700 rounded transition">M21</button>
+            </div>
+          </div>
+          <div class="h-56 relative">
             <canvas id="siripppRadarChart"></canvas>
           </div>
-          <div class="text-[11px] text-slate-500 mt-2 text-center">
-            S-I-R-I-P-P-P 四次審查演進 (🔵 M3 / 🟢 M9 / 🟠 M15 / 🟣 M21)
+          <div class="text-[11px] text-slate-500 mt-2 text-center flex justify-center gap-4">
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-blue-500 rounded-sm inline-block opacity-80"></span> PGY自評</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-orange-500 rounded-sm inline-block opacity-80"></span> 導師評分</span>
           </div>
         </div>
 
@@ -257,31 +266,13 @@
             <!-- 技術考點數 -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 技術考與報告 (6項)</h4>
-              <div class="grid grid-cols-1 gap-1.5">
-                <button data-id="t1" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">管路更換</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t2" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">肺功能測量</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t3" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">氣囊漏氣測試</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t4" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">呼吸評估測量</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t5" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">小量噴霧器</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t6" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">侵襲性/非侵襲性管路裝置</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button data-id="t1" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">管路更換</button>
+                <button data-id="t2" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">肺功能測量</button>
+                <button data-id="t3" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">氣囊漏氣測試</button>
+                <button data-id="t4" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">呼吸評估測量</button>
+                <button data-id="t5" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">小量噴霧器</button>
+                <button data-id="t6" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">侵襲性/非侵襲性管路裝置</button>
               </div>
             </div>
 
@@ -431,31 +422,13 @@
             <!-- 技術考與報告 -->
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 技術考與學術報告 (6項)</h4>
-              <div class="grid grid-cols-1 gap-1.5">
-                <button data-id="t7" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">俯臥作業</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t8" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">HFOV 高頻</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t9" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">iNO 吸入</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="t10" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">肺部擴充術</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="rep1" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">個案報告 1</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="rep2" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">期刊報告 1</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button data-id="t7" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">俯臥作業</button>
+                <button data-id="t8" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">HFOV 高頻</button>
+                <button data-id="t9" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">iNO 吸入</button>
+                <button data-id="t10" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">肺部擴充術</button>
+                <button data-id="rep1" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">個案報告 1</button>
+                <button data-id="rep2" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">期刊報告 1</button>
               </div>
             </div>
 
@@ -598,18 +571,9 @@
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 技術考與總驗收 (3項)</h4>
               <div class="grid grid-cols-1 gap-1.5">
-                <button data-id="t11" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">13-24M 技術評核總驗收</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="rep3" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">第二年 個案報告 1 篇</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
-                <button data-id="rep4" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-left flex justify-between items-center hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700 course-text">文獻實證專題報告 1 篇</span>
-                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
-                </button>
+                <button data-id="t11" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">13-24M 技術評核總驗收</button>
+                <button data-id="rep3" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">第二年 個案報告 1 篇</button>
+                <button data-id="rep4" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">文獻實證專題報告 1 篇</button>
               </div>
             </div>
 
@@ -773,6 +737,7 @@
     let studentRef = ref(db, `pgy_students/${pgyStudentId}`);
     let localScores = {};
     let charts = {};
+    let activeSiriMonth = 'm3';
 
     function calculatePgyMonth(customDateStr = null) {
       const dateInput = document.getElementById('startDateInput');
@@ -846,23 +811,29 @@
         }
       });
 
-      // 2. SIRIPPP 七軸雷達圖
+      // 2. SIRIPPP 七軸雷達圖 (點選 M3, M9, M15, M21 顯示雙線對比：PGY自評 vs 導師評分，0.5 級距)
       const siriCtx = document.getElementById('siripppRadarChart').getContext('2d');
       charts.siri = new Chart(siriCtx, {
         type: 'radar',
         data: {
           labels: ['S (體系)', 'I (人際)', 'R (實證)', 'I (跨領域)', 'P (專業)', 'P (照護)', 'P (發展)'],
           datasets: [
-            { label: 'M3', data: Array(7).fill(0), borderColor: '#3b82f6' },
-            { label: 'M9', data: Array(7).fill(0), borderColor: '#10b981' },
-            { label: 'M15', data: Array(7).fill(0), borderColor: '#f97316' },
-            { label: 'M21', data: Array(7).fill(0), borderColor: '#8b5cf6' }
+            { label: 'PGY 自評分數', data: Array(7).fill(0), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', borderWidth: 2 },
+            { label: '臨床導師評分', data: Array(7).fill(0), borderColor: '#f97316', backgroundColor: 'rgba(249, 115, 22, 0.2)', borderWidth: 2 }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          scales: { r: { min: 0, max: 5, ticks: { stepSize: 1 } } }
+          scales: { 
+            r: { 
+              min: 0, 
+              max: 5, 
+              ticks: { 
+                stepSize: 0.5 // 設為 0.5 級距以反映小數點分數差距
+              } 
+            } 
+          }
         }
       });
 
@@ -949,6 +920,33 @@
       });
     }
 
+    // 切換 SIRIPPP 月份函式
+    window.switchSiriMonth = function(month) {
+      activeSiriMonth = month;
+      ['m3', 'm9', 'm15', 'm21'].forEach(m => {
+        const btn = document.getElementById(`btn_siri_${m}`);
+        if (btn) {
+          if (m === month) {
+            btn.className = "px-2 py-0.5 text-[10px] font-bold bg-sky-600 text-white rounded transition";
+          } else {
+            btn.className = "px-2 py-0.5 text-[10px] font-bold bg-slate-200 text-slate-700 rounded transition";
+          }
+        }
+      });
+      updateSiriChartData();
+    };
+
+    function updateSiriChartData() {
+      if (!charts.siri) return;
+      const siriAspects = ['s', 'i1', 'r', 'i2', 'p1', 'p2', 'p3'];
+      const selfData = siriAspects.map(a => parseFloat(localScores[`siri_${activeSiriMonth}_${a}`]) || 0);
+      const mentorData = siriAspects.map(a => parseFloat(localScores[`m1_siri_${activeSiriMonth}_${a}`]) || 0);
+
+      charts.siri.data.datasets[0].data = selfData;
+      charts.siri.data.datasets[1].data = mentorData;
+      charts.siri.update();
+    }
+
     function updateCharts() {
       const epaKeys = ['epa1', 'epa3', 'epa5', 'epa6', 'epa7', 'epa8', 'epa9', 'epa10', 'epa11'];
       const mapEpaLevelToNum = (val) => {
@@ -971,13 +969,7 @@
       }
       charts.epa.update();
 
-      const siriMonths = ['m3', 'm9', 'm15', 'm21'];
-      const siriAspects = ['s', 'i1', 'r', 'i2', 'p1', 'p2', 'p3'];
-      siriMonths.forEach((m, idx) => {
-        const mData = siriAspects.map(a => parseFloat(localScores[`siri_${m}_${a}`]) || 0);
-        charts.siri.data.datasets[idx].data = mData;
-      });
-      charts.siri.update();
+      updateSiriChartData();
 
       const minicexMonths = ['m3', 'm6', 'm9', 'm12', 'm15', 'm18', 'm21', 'm24'];
       charts.minicex.data.datasets[0].data = minicexMonths.map(m => parseFloat(localScores[`minicex_${m}`]) || null);
@@ -1020,14 +1012,9 @@
           el.classList.add('completed');
           if (courseTextSpan) courseTextSpan.style.color = '#1e3a8a';
           if (statusTagSpan) {
-            // 針對技術考與報告類按鈕，顯示分數
-            if (el.classList.contains('score-btn')) {
-              statusTagSpan.innerText = `${val}分`;
-            } else {
-              statusTagSpan.innerText = "完成";
-            }
+            statusTagSpan.innerText = "完成";
             statusTagSpan.style.color = "#1e3a8a";
-          } else if (el.classList.contains('epa-btn') || 
+          } else if (el.classList.contains('score-btn') || el.classList.contains('epa-btn') || 
               el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn') ||
               el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
             const label = el.getAttribute('data-name') || el.getAttribute('data-id').split('_').pop().toUpperCase();
@@ -1037,11 +1024,7 @@
           el.classList.remove('completed');
           if (courseTextSpan) courseTextSpan.style.color = '';
           if (statusTagSpan) {
-            if (el.classList.contains('score-btn')) {
-              statusTagSpan.innerText = "待完成";
-            } else {
-              statusTagSpan.innerText = "待完成";
-            }
+            statusTagSpan.innerText = "待完成";
             statusTagSpan.style.color = "";
           } else if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
             el.innerText = el.getAttribute('data-name');
@@ -1111,11 +1094,11 @@
             else if (input === "") delete localScores[id];
           }
           else if (el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
-            const input = prompt("請輸入評核分數 / Level (1 ~ 5 分)：", currentVal || "3");
+            const input = prompt("請輸入評核分數 (支援小數點，例如 3.5)：", currentVal || "3.5");
             if (input !== null && input.trim() !== "") {
               const score = parseFloat(input.trim());
-              if (score >= 1 && score <= 5) localScores[id] = score;
-              else alert("請輸入 1 到 5 之間的分數");
+              if (score >= 0 && score <= 5) localScores[id] = score;
+              else alert("請輸入 0 到 5 之間的有效分數");
             } else if (input === "") delete localScores[id];
           }
           else if (el.classList.contains('score-btn')) {
