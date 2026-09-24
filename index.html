@@ -182,6 +182,7 @@
     </div>
 
     <!-- 下方集點區域：三階段 (3 欄式 Grid 佈局) -->
+    <div class="max-w-7xl mx-auto px-4 py-6 space-y-6">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
       <!-- 階段一: M1-M3 基礎課程 (左欄) -->
@@ -200,19 +201,24 @@
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 基礎專業技能課程 (5項)</h4>
               <div class="space-y-1.5">
                 <button data-id="c1_1" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700">基本氧氣與溼氣噴霧治療</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="基本氧氣與溼氣噴霧治療">基本氧氣與溼氣噴霧治療</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c1_2" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700">低血氧/高二氧化碳/ABG</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="低血氧/高二氧化碳/ABG">低血氧/高二氧化碳/ABG</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c1_3" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700">Auto-PEEP及處置</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="Auto-PEEP及處置">Auto-PEEP及處置</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c1_4" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700">呼吸系統身體評估</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="呼吸系統身體評估">呼吸系統身體評估</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c1_5" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-sky-400">
-                  <span class="text-xs font-bold text-slate-700">VPN登錄與健保事宜</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="VPN登錄與健保事宜">VPN登錄與健保事宜</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
               </div>
             </div>
@@ -261,11 +267,9 @@
               </div>
             </div>
 
-            <!-- 階段一 常態管考 (分開獨立四項) -->
+            <!-- 階段一 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段一常態管考</h4>
-              
-              <!-- 1. 訪談 -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -274,32 +278,24 @@
                   <button data-id="m_m3" class="stamp-btn px-2 py-0.5 border rounded bg-slate-50">M3</button>
                 </div>
               </div>
-
-              <!-- 2. CCC -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
                   <button data-id="ccc_m3" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M3</button>
                 </div>
               </div>
-
-              <!-- 3. Mini-CEX -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
                   <button data-id="minicex_m3" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M3</button>
                 </div>
               </div>
-
-              <!-- 4. CbD -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
                   <button data-id="cbd_m3" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M3</button>
                 </div>
               </div>
-
-              <!-- SIRIPPP M3 -->
               <div class="space-y-1 pt-1 border-t border-slate-100">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M3 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -324,7 +320,6 @@
                   <button data-id="m1_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -346,19 +341,24 @@
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 核心專業課程 (5項)</h4>
               <div class="space-y-1.5">
                 <button data-id="c2_1" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700">成人呼吸生理與胸腔疾病</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="成人呼吸生理與胸腔疾病">成人呼吸生理與胸腔疾病</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c2_2" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700">小兒氣道照護與呼吸生理</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="小兒氣道照護與呼吸生理">小兒氣道照護與呼吸生理</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c2_3" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700">呼吸器分類與設定調整</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="呼吸器分類與設定調整">呼吸器分類與設定調整</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c2_4" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700">呼吸器脫離與 ATC 應用</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="呼吸器脫離與 ATC 應用">呼吸器脫離與 ATC 應用</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
                 <button data-id="c2_5" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg w-full text-left flex justify-between items-center hover:border-emerald-400">
-                  <span class="text-xs font-bold text-slate-700">BLS/ACLS 考照通過</span>
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="BLS/ACLS 考照通過">BLS/ACLS 考照通過</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
               </div>
             </div>
@@ -423,11 +423,9 @@
               </div>
             </div>
 
-            <!-- 階段二 常態管考 (分開獨立四項) -->
+            <!-- 階段二 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段二常態管考</h4>
-              
-              <!-- 1. 訪談 -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -442,16 +440,12 @@
                   <button data-id="m_m12" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M12</button>
                 </div>
               </div>
-
-              <!-- 2. CCC -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
                   <button data-id="ccc_m9" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M9</button>
                 </div>
               </div>
-
-              <!-- 3. Mini-CEX -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -460,8 +454,6 @@
                   <button data-id="minicex_m12" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M12</button>
                 </div>
               </div>
-
-              <!-- 4. CbD -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -470,9 +462,7 @@
                   <button data-id="cbd_m12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-slate-50">CbD M12</button>
                 </div>
               </div>
-
-              <!-- SIRIPPP M9 -->
-              <div class="space-y-1 pt-1 border-t border-slate-100">
+              <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M9 核心能力自評 (1-5分)：</span>
                 <div class="flex items-center gap-1 text-xs">
                   <button data-id="siri_m9_s" data-name="S" class="sub-stamp-btn siri-btn">S</button>
@@ -496,7 +486,6 @@
                   <button data-id="m1_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -517,32 +506,41 @@
             <div>
               <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔷 高階專業課程 (9項)</h4>
               <div class="grid grid-cols-1 gap-1.5">
-                <button data-id="c3_1" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">手術前後呼吸照護</span>
+                <button data-id="c3_1" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="手術前後呼吸照護">手術前後呼吸照護</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_2" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">COPD 照護與肺復健</span>
+                <button data-id="c3_2" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="COPD 照護與肺復健">COPD 照護與肺復健</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_3" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">ARDS 呼吸照護與策略</span>
+                <button data-id="c3_3" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="ARDS 呼吸照護與策略">ARDS 呼吸照護與策略</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_4" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">VAP 預防與照護</span>
+                <button data-id="c3_4" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="VAP 預防與照護">VAP 預防與照護</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_5" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">呼吸功能改善與訓練</span>
+                <button data-id="c3_5" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="呼吸功能改善與訓練">呼吸功能改善與訓練</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_6" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">HFOV 專題與實務</span>
+                <button data-id="c3_6" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="HFOV 專題與實務">HFOV 專題與實務</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_7" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">iNO 專題與實務</span>
+                <button data-id="c3_7" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="iNO 專題與實務">iNO 專題與實務</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_8" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">Prone Position 俯臥照護</span>
+                <button data-id="c3_8" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="Prone Position 俯臥照護">Prone Position 俯臥照護</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
-                <button data-id="c3_9" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">Lung Recruitment 肺招募術</span>
+                <button data-id="c3_9" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400 flex justify-between items-center">
+                  <span class="text-xs font-bold text-slate-700 course-text" data-original="Lung Recruitment 肺招募術">Lung Recruitment 肺招募術</span>
+                  <span class="text-[10px] text-slate-400 font-semibold status-tag">待完成</span>
                 </button>
               </div>
             </div>
@@ -570,11 +568,9 @@
               </div>
             </div>
 
-            <!-- 階段三 常態管考 (分開獨立四項) -->
+            <!-- 階段三 常態管考 -->
             <div class="border-t border-slate-100 pt-3 space-y-3">
               <h4 class="font-semibold text-xs text-slate-400 uppercase">📌 階段三常態管考</h4>
-              
-              <!-- 1. 訪談 -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-sky-800">導師訪談 (Monthly)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
@@ -592,8 +588,6 @@
                   <button data-id="m_m24" class="stamp-btn px-1.5 py-0.5 border rounded bg-slate-50">M24</button>
                 </div>
               </div>
-
-              <!-- 2. CCC -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-purple-800">CCC 臨床能力委員會：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -601,8 +595,6 @@
                   <button data-id="ccc_m21" class="stamp-btn ccc-btn px-2 py-0.5 border rounded bg-slate-50">CCC M21</button>
                 </div>
               </div>
-
-              <!-- 3. Mini-CEX -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-indigo-800">Mini-CEX (1-9分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -612,8 +604,6 @@
                   <button data-id="minicex_m24" class="stamp-btn minicex-btn px-2 py-0.5 border rounded bg-slate-50">CEX M24</button>
                 </div>
               </div>
-
-              <!-- 4. CbD -->
               <div class="space-y-1">
                 <span class="text-[11px] font-semibold text-amber-800">CbD 病例討論 (60-100分)：</span>
                 <div class="flex flex-wrap gap-1.5 text-xs">
@@ -678,8 +668,10 @@
       </div>
 
     </div>
+    </div>
 
     <!-- 貫穿 24M 的週期性常態管考橫幅 -->
+    <div class="max-w-7xl mx-auto px-4">
     <div class="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-5 space-y-3">
       <h3 class="font-bold text-emerald-900 text-sm flex items-center gap-2">
         <i class="fa-solid fa-arrows-spin text-emerald-600"></i> 🟢 週期性常態管考 (Recurrent Trackers - 貫穿 24M)
@@ -705,6 +697,7 @@
           • 第一年 &ge; 12h / 第二年 &ge; 6h (含人安、倫理、感染管制、高齡等)
         </div>
       </div>
+    </div>
     </div>
 
   </main>
@@ -975,9 +968,16 @@
         const id = el.getAttribute('data-id');
         const val = localScores[id];
         
+        // 針對具備 course-text 的主課程按鈕做「待完成 / 完成」切換
+        const courseTextSpan = el.querySelector('.course-text');
+        const statusTagSpan = el.querySelector('.status-tag');
+
         if (val) {
           el.classList.add('completed');
-          if (el.classList.contains('score-btn') || el.classList.contains('epa-btn') || 
+          if (courseTextSpan && statusTagSpan) {
+            courseTextSpan.innerText = "完成";
+            statusTagSpan.innerText = "";
+          } else if (el.classList.contains('score-btn') || el.classList.contains('epa-btn') || 
               el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn') ||
               el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
             const label = el.getAttribute('data-name') || el.getAttribute('data-id').split('_').pop().toUpperCase();
@@ -985,7 +985,10 @@
           }
         } else {
           el.classList.remove('completed');
-          if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
+          if (courseTextSpan && statusTagSpan) {
+            courseTextSpan.innerText = courseTextSpan.getAttribute('data-original');
+            statusTagSpan.innerText = "待完成";
+          } else if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
             el.innerText = el.getAttribute('data-name');
           }
         }
