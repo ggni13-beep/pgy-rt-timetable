@@ -57,6 +57,7 @@
           <h1 class="font-bold text-base md:text-lg leading-tight">臺大醫院 PGY RT 24M 評核集點卡</h1>
           <div class="flex flex-wrap items-center gap-2 text-xs text-slate-300 mt-0.5">
             <span>學員 ID: <input type="text" id="studentIdInput" class="bg-slate-800 text-white px-1.5 py-0.5 rounded border border-slate-700 w-20 text-xs font-bold" value="030634"></span>
+            <span>專責導師: <input type="text" id="mentorInput" class="bg-slate-800 text-white px-1.5 py-0.5 rounded border border-slate-700 w-20 text-xs font-bold" value="王大明"></span>
             <span>到職日: <input type="date" id="startDateInput" class="bg-slate-800 text-white px-1.5 py-0.5 rounded border border-slate-700 text-xs"></span>
             <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-bold">目前 PGY：M1</span>
             <span id="gradDateBadge" class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded">預計完訓：--</span>
@@ -108,7 +109,7 @@
             <canvas id="epaRadarChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
-            刻度：1 $\rightarrow$ 2a $\rightarrow$ 2b $\rightarrow$ 3a $\rightarrow$ 3b $\rightarrow$ 3c $\rightarrow$ 4 (🔵 Test 1 / 🟢 Test 2 / 🟣 Test 3)
+            刻度：1 &rarr; 2a &rarr; 2b &rarr; 3a &rarr; 3b &rarr; 3c &rarr; 4 (🔵 Test 1 / 🟢 Test 2 / 🟣 Test 3)
           </div>
         </div>
 
@@ -173,7 +174,7 @@
             <canvas id="techChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
-            技術考 & 學術報告 (通過標準 $\ge$ 80分)
+            技術考 & 學術報告 (通過標準 &ge; 80分)
           </div>
         </div>
 
@@ -485,7 +486,7 @@
                   <span class="text-xs font-bold text-slate-700">Prone Position 俯臥照護</span>
                 </button>
                 <button data-id="c3_9" class="stamp-btn is-core border border-slate-200 bg-slate-50 p-2 rounded-lg text-left hover:border-purple-400">
-                  <span class="text-xs font-bold text-slate-700">Lung Recruitment </span>
+                  <span class="text-xs font-bold text-slate-700">Lung Recruitment 肺招募術</span>
                 </button>
               </div>
             </div>
@@ -621,7 +622,7 @@
         </div>
         <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm">
           <strong class="text-emerald-800 block mb-1">📌 人文素養與全人照護</strong>
-          • 第一年 $\ge$ 12h / 第二年 $\ge$ 6h (含人安、倫理、感染管制、高齡等)
+          • 第一年 &ge; 12h / 第二年 &ge; 6h (含人安、倫理、感染管制、高齡等)
         </div>
       </div>
     </div>
@@ -681,6 +682,12 @@
       calculatePgyMonth();
       localStorage.setItem(`pgy_startDate_${pgyStudentId}`, newDate);
       set(ref(db, `pgy_students/${pgyStudentId}/startDate`), newDate);
+    });
+
+    document.getElementById('mentorInput').addEventListener('change', (e) => {
+      const newMentor = e.target.value.trim();
+      localStorage.setItem(`pgy_mentor_${pgyStudentId}`, newMentor);
+      set(ref(db, `pgy_students/${pgyStudentId}/mentor`), newMentor);
     });
 
     document.getElementById('studentIdInput').addEventListener('change', (e) => {
@@ -898,7 +905,6 @@
           }
         } else {
           el.classList.remove('completed');
-          // 恢復原始文字
           if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
             el.innerText = el.getAttribute('data-name');
           }
@@ -912,6 +918,7 @@
       onValue(studentRef, (snapshot) => {
         const data = snapshot.val();
         localScores = (data && data.scores) ? data.scores : {};
+        
         if (data && data.startDate) {
           document.getElementById('startDateInput').value = data.startDate;
           calculatePgyMonth(data.startDate);
@@ -920,6 +927,14 @@
           document.getElementById('startDateInput').value = savedDate;
           calculatePgyMonth(savedDate);
         }
+
+        if (data && data.mentor) {
+          document.getElementById('mentorInput').value = data.mentor;
+        } else {
+          const savedMentor = localStorage.getItem(`pgy_mentor_${pgyStudentId}`) || '王大明';
+          document.getElementById('mentorInput').value = savedMentor;
+        }
+
         updateUI();
       });
     }
