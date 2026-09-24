@@ -968,8 +968,7 @@
         const id = el.getAttribute('data-id');
         const val = localScores[id];
         
-        // 針對具備 course-text 的主課程按鈕做「待完成 / 完成」切換，不覆蓋主題名稱
-        const courseTextSpan = el.querySelector('.course-text');
+        // 針對主課程按鈕：保持左側主題名稱不變，僅切換右側「待完成 / 完成」狀態標籤
         const statusTagSpan = el.querySelector('.status-tag');
 
         if (val) {
