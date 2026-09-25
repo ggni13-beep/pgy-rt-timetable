@@ -56,43 +56,45 @@
 
   <!-- 頂部導覽列 Header -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 space-y-2">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-3">
-          <i class="fa-solid fa-lungs text-sky-400 text-3xl"></i>
-          <h1 class="font-bold text-xl md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
+    <div class="max-w-7xl mx-auto px-3 md:px-4 py-2.5 md:py-3.5 space-y-1.5 md:space-y-2">
+      <!-- 第一列：標題 + 按鈕群 -->
+      <div class="flex flex-wrap items-center justify-between gap-2 md:gap-3">
+        <div class="flex items-center space-x-2 md:space-x-3">
+          <i class="fa-solid fa-lungs text-sky-400 text-2xl md:text-3xl"></i>
+          <h1 class="font-bold text-base md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
         </div>
-        <div class="flex items-center space-x-2">
-          <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs md:text-sm px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition shadow">
+        <div class="flex items-center space-x-1.5 md:space-x-2">
+          <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-[11px] md:text-sm px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
             <i class="fa-solid fa-camera"></i> 一鍵截圖 PNG
           </button>
-          <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-xs md:text-sm px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition shadow">
+          <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-[11px] md:text-sm px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
             <i class="fa-solid fa-rotate-left"></i> 一鍵清空
           </button>
-          <span class="text-xs md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2.5 py-1 rounded-full flex items-center gap-1 ml-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Firebase 即時連線
+          <span class="text-[11px] md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 md:px-2.5 py-0.5 md:py-1 rounded-full flex items-center gap-1 ml-0.5 md:ml-1">
+            <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-400 animate-ping"></span> Firebase 連線
           </span>
         </div>
       </div>
       
-      <div class="flex flex-wrap items-center gap-3 pt-1 text-sm md:text-base text-slate-200 font-medium">
+      <!-- 第二列：個人資訊輸入與狀態欄 (手機縮小字體與邊距，電腦維持) -->
+      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 pt-0.5 text-xs md:text-base text-slate-200 font-medium">
         <div class="flex items-center gap-1">
           <span>員編：</span>
-          <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-2 py-0.5 text-sky-300 font-mono w-24 focus:outline-none focus:border-sky-400 text-sm md:text-base" value="030634">
+          <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-1.5 md:px-2 py-0.5 text-sky-300 font-mono w-20 md:w-24 focus:outline-none focus:border-sky-400 text-xs md:text-base" value="030634">
         </div>
         <div class="flex items-center gap-1">
           <span>Mentor：</span>
-          <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-2 py-0.5 text-sky-300 font-medium w-28 md:w-32 focus:outline-none focus:border-sky-400 text-sm md:text-base">
+          <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-1.5 md:px-2 py-0.5 text-sky-300 font-medium w-24 md:w-32 focus:outline-none focus:border-sky-400 text-xs md:text-base">
         </div>
         <div class="flex items-center gap-1">
           <span>到職日：</span>
-          <input type="date" id="startDateInput" class="bg-slate-800/90 border-2 border-sky-400/80 rounded px-2 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 shadow-inner text-sm md:text-base" value="2025-08-01">
+          <input type="date" id="startDateInput" class="bg-slate-800/90 border border-sky-400/80 md:border-2 rounded px-1.5 md:px-2 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 shadow-inner text-xs md:text-base" value="2025-08-01">
         </div>
         <div class="flex items-center gap-1 text-amber-300">
           <span>預計完訓日：</span>
-          <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-sm md:text-base">2027/07/31</span>
+          <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-1.5 md:px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-xs md:text-base">2027/07/31</span>
         </div>
-        <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2.5 py-0.5 rounded-full font-bold text-sm md:text-base">目前 PGY：M14</span>
+        <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2 md:px-2.5 py-0.5 rounded-full font-bold text-xs md:text-base">目前 PGY：M14</span>
       </div>
     </div>
   </header>
