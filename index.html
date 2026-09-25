@@ -473,7 +473,7 @@
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m6" data-name="M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M6</button>
-                  <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
+                  <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
                   <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-2.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
@@ -859,7 +859,7 @@
         }
       });
 
-      // 4. 技術考柱狀圖
+      // 4. 技術考柱狀圖 (包含 t6a 與 t6b)
       const techCtx = document.getElementById('techChart').getContext('2d');
       charts.tech = new Chart(techCtx, {
         type: 'bar',
@@ -1021,10 +1021,11 @@
         const id = el.getAttribute('data-id');
         if (localScores[id]) completed++;
       });
-      const percent = Math.round((completed / 45) * 100);
+      // 總分母維持為 44 項
+      const percent = Math.round((completed / 44) * 100);
       document.getElementById('completedCount').innerText = completed;
       document.getElementById('progressPercent').innerText = `${percent}%`;
-      document.getElementById('progressBar').style.width = `${percent}%`;
+      document.getElementById('progressBar').style.width = `${Math.min(percent, 100)}%`;
     }
 
     function updateUI() {
