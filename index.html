@@ -54,47 +54,47 @@
 </head>
 <body class="text-slate-800 pb-12" id="captureArea">
 
-  <!-- 頂部導覽列 Header -->
+  <!-- 頂部導覽列 Header (手機版縮小黑底基本資訊，電腦版維持原狀) -->
   <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-3 md:px-4 py-2.5 md:py-3.5 space-y-1.5 md:space-y-2">
+    <div class="max-w-7xl mx-auto px-2.5 md:px-4 py-2 md:py-3.5 space-y-1 md:space-y-2">
       <!-- 第一列：標題 + 按鈕群 -->
-      <div class="flex flex-wrap items-center justify-between gap-2 md:gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-1.5 md:gap-3">
         <div class="flex items-center space-x-2 md:space-x-3">
-          <i class="fa-solid fa-lungs text-sky-400 text-2xl md:text-3xl"></i>
-          <h1 class="font-bold text-base md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
+          <i class="fa-solid fa-lungs text-sky-400 text-xl md:text-3xl"></i>
+          <h1 class="font-bold text-sm md:text-2xl leading-tight tracking-wide text-white">臺大醫院 PGY RT 24M 評核集點卡</h1>
         </div>
         <div class="flex items-center space-x-1.5 md:space-x-2">
-          <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-[11px] md:text-sm px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
+          <button onclick="downloadPNG()" class="bg-sky-600 hover:bg-sky-500 text-white text-[10px] md:text-sm px-2 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
             <i class="fa-solid fa-camera"></i> 一鍵截圖 PNG
           </button>
-          <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-[11px] md:text-sm px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
+          <button onclick="resetAllScores()" class="bg-rose-600 hover:bg-rose-500 text-white text-[10px] md:text-sm px-2 md:px-3.5 py-1 md:py-1.5 rounded-lg font-semibold flex items-center gap-1 transition shadow">
             <i class="fa-solid fa-rotate-left"></i> 一鍵清空
           </button>
-          <span class="text-[11px] md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 md:px-2.5 py-0.5 md:py-1 rounded-full flex items-center gap-1 ml-0.5 md:ml-1">
+          <span class="text-[10px] md:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 md:px-2.5 py-0.5 md:py-1 rounded-full flex items-center gap-1">
             <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-400 animate-ping"></span> Firebase 連線
           </span>
         </div>
       </div>
       
-      <!-- 第二列：個人資訊輸入與狀態欄 (手機縮小字體與邊距，電腦維持) -->
-      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 pt-0.5 text-xs md:text-base text-slate-200 font-medium">
-        <div class="flex items-center gap-1">
+      <!-- 第二列：個人資訊輸入與狀態欄 (手機縮小字體與間距，電腦維持) -->
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-0.5 text-[11px] md:text-base text-slate-200 font-medium">
+        <div class="flex items-center gap-0.5">
           <span>員編：</span>
-          <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-1.5 md:px-2 py-0.5 text-sky-300 font-mono w-20 md:w-24 focus:outline-none focus:border-sky-400 text-xs md:text-base" value="030634">
+          <input type="text" id="studentIdInput" class="bg-slate-800 border border-slate-600 rounded px-1 md:px-2 py-0.5 text-sky-300 font-mono w-16 md:w-24 focus:outline-none focus:border-sky-400 text-[11px] md:text-base" value="030634">
         </div>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-0.5">
           <span>Mentor：</span>
-          <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-1.5 md:px-2 py-0.5 text-sky-300 font-medium w-24 md:w-32 focus:outline-none focus:border-sky-400 text-xs md:text-base">
+          <input type="text" id="mentorInput" placeholder="請輸入導師" class="bg-slate-800 border border-slate-600 rounded px-1 md:px-2 py-0.5 text-sky-300 font-medium w-20 md:w-32 focus:outline-none focus:border-sky-400 text-[11px] md:text-base">
         </div>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-0.5">
           <span>到職日：</span>
-          <input type="date" id="startDateInput" class="bg-slate-800/90 border border-sky-400/80 md:border-2 rounded px-1.5 md:px-2 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 shadow-inner text-xs md:text-base" value="2025-08-01">
+          <input type="date" id="startDateInput" class="bg-slate-800/90 border border-sky-400/80 md:border-2 rounded px-1 md:px-2 py-0.5 text-sky-200 font-mono font-bold focus:outline-none focus:border-sky-300 text-[11px] md:text-base" value="2025-08-01">
         </div>
-        <div class="flex items-center gap-1 text-amber-300">
+        <div class="flex items-center gap-0.5 text-amber-300">
           <span>預計完訓日：</span>
-          <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-1.5 md:px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-xs md:text-base">2027/07/31</span>
+          <span id="gradDateBadge" class="font-mono font-bold bg-amber-500/20 px-1 md:px-2 py-0.5 rounded border border-amber-500/30 text-amber-300 text-[11px] md:text-base">2027/07/31</span>
         </div>
-        <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2 md:px-2.5 py-0.5 rounded-full font-bold text-xs md:text-base">目前 PGY：M14</span>
+        <span id="pgyMonthBadge" class="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-1.5 md:px-2.5 py-0.5 rounded-full font-bold text-[11px] md:text-base">目前 PGY：M14</span>
       </div>
     </div>
   </header>
@@ -109,7 +109,7 @@
         <div>
           <span class="text-xs text-sky-300 font-semibold tracking-wider uppercase">Core Competency Progress</span>
           <h2 class="text-2xl font-bold mt-1">核心技能達成率 <span id="progressPercent" class="text-sky-400">0%</span></h2>
-          <p class="text-xs text-slate-300 mt-0.5">完成 <span id="completedCount">0</span> / 44 項固定核心指標 (不含週期管考)</p>
+          <p class="text-xs text-slate-300 mt-0.5">完成 <span id="completedCount">0</span> / 45 項固定核心指標 (不含週期管考)</p>
         </div>
         <div class="w-full md:w-1/3 bg-slate-800 rounded-full h-4 p-0.5 border border-slate-700">
           <div id="progressBar" class="bg-sky-400 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -281,14 +281,15 @@
             </div>
 
             <div>
-              <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 技術考與報告 (6項)</h4>
+              <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 技術考與報告 (7項)</h4>
               <div class="grid grid-cols-2 gap-1.5">
                 <button data-id="t1" data-name="管路更換" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">管路更換</button>
                 <button data-id="t2" data-name="肺功能測量" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">肺功能測量</button>
                 <button data-id="t3" data-name="氣囊漏氣" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">氣囊漏氣</button>
                 <button data-id="t4" data-name="呼吸評估" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">呼吸評估</button>
                 <button data-id="t5" data-name="小量噴霧" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">小量噴霧</button>
-                <button data-id="t6" data-name="呼吸器裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">呼吸器裝置</button>
+                <button data-id="t6a" data-name="侵襲性呼吸器裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">侵襲性裝置</button>
+                <button data-id="t6b" data-name="非侵襲性呼吸器裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold col-span-2">非侵襲性裝置</button>
               </div>
             </div>
 
@@ -472,8 +473,8 @@
                 <span class="text-[11px] font-semibold text-amber-700">CbD 病例討論 (60-100分)：</span>
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m6" data-name="M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M6</button>
-                  <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
-                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
+                  <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
+                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-2.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
               <div class="space-y-1 pt-1">
@@ -618,7 +619,7 @@
                   <button data-id="cbd_m15" data-name="M15" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M15</button>
                   <button data-id="cbd_m18" data-name="M18" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M18</button>
                   <button data-id="cbd_m21" data-name="M21" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M21</button>
-                  <button data-id="cbd_m24" data-name="M24" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M24</button>
+                  <button data-id="cbd_m24" data-name="M24" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M24</button>
                 </div>
               </div>
               <div class="space-y-1 pt-1">
@@ -863,10 +864,10 @@
       charts.tech = new Chart(techCtx, {
         type: 'bar',
         data: {
-          labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'R1', 'R2', 'R3', 'R4'],
+          labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6a', 'T6b', 'T7', 'T8', 'T9', 'T10', 'T11', 'R1', 'R2', 'R3', 'R4'],
           datasets: [{
             label: '技術考/報告分數',
-            data: Array(15).fill(0),
+            data: Array(16).fill(0),
             backgroundColor: '#0d9488'
           }]
         },
@@ -1008,7 +1009,7 @@
       charts.ccc.data.datasets[0].data = cccMonths.map(m => parseFloat(localScores[`ccc_${m}`]) || 0);
       charts.ccc.update();
 
-      const techKeys = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10', 't11', 'rep1', 'rep2', 'rep3', 'rep4'];
+      const techKeys = ['t1', 't2', 't3', 't4', 't5', 't6a', 't6b', 't7', 't8', 't9', 't10', 't11', 'rep1', 'rep2', 'rep3', 'rep4'];
       charts.tech.data.datasets[0].data = techKeys.map(k => parseFloat(localScores[k]) || 0);
       charts.tech.update();
     }
@@ -1020,7 +1021,7 @@
         const id = el.getAttribute('data-id');
         if (localScores[id]) completed++;
       });
-      const percent = Math.round((completed / 44) * 100);
+      const percent = Math.round((completed / 45) * 100);
       document.getElementById('completedCount').innerText = completed;
       document.getElementById('progressPercent').innerText = `${percent}%`;
       document.getElementById('progressBar').style.width = `${percent}%`;
