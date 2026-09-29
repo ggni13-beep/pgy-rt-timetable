@@ -104,7 +104,7 @@
 
   <main id="capture-area" class="max-w-7xl mx-auto px-4 py-6 space-y-6">
 
-    <!-- 儀表板區域：進度條與 6 大圖表 -->
+    <!-- 儀表板區域：進度條與圖表區 -->
     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
       
       <div class="bg-gradient-to-r from-sky-900 to-slate-900 text-white rounded-xl p-5 flex flex-wrap items-center justify-between gap-4 shadow-md">
@@ -118,14 +118,15 @@
         </div>
       </div>
 
-      <!-- 6 大圖表 (上三圖、下三圖配置) -->
+      <!-- 圖表區：改為 3 欄式配置 (左: EPA, 中: SIRIPPP, 右: 上下疊加 CCC 與 技術考) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
+        <!-- 左欄：EPA 雷達圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
             <i class="fa-solid fa-chart-radar text-sky-600"></i> EPA 縱向勝任力雷達圖
           </h3>
-          <div class="h-60 relative">
+          <div class="h-64 relative">
             <canvas id="epaRadarChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
@@ -133,12 +134,12 @@
           </div>
         </div>
 
+        <!-- 中欄：SIRIPPP 年輪圖 -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
           <div class="flex items-center justify-between mb-2">
             <h3 class="font-bold text-sm text-slate-700 flex items-center gap-2">
               <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
             </h3>
-            <!-- SIRIPPP 年輪圖上方的 M3、M9、M15、M21 切換選項按鈕 -->
             <div class="flex gap-1">
               <button id="btn_siri_m3" onclick="switchSiriMonth('m3')" class="px-2 py-0.5 text-xs font-bold bg-sky-600 text-white rounded shadow-sm transition">M3</button>
               <button id="btn_siri_m9" onclick="switchSiriMonth('m9')" class="px-2 py-0.5 text-xs font-bold bg-white text-slate-700 rounded shadow-sm transition">M9</button>
@@ -146,7 +147,7 @@
               <button id="btn_siri_m21" onclick="switchSiriMonth('m21')" class="px-2 py-0.5 text-xs font-bold bg-white text-slate-700 rounded shadow-sm transition">M21</button>
             </div>
           </div>
-          <div class="h-60 relative">
+          <div class="h-64 relative">
             <canvas id="siripppRadarChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
@@ -154,55 +155,48 @@
           </div>
         </div>
 
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-stairs text-purple-600"></i> CCC 信賴等級 (Level 1-5)
-          </h3>
-          <div class="h-60 relative">
-            <canvas id="cccChart"></canvas>
+        <!-- 右欄：上下疊加 CCC 階梯圖 與 技術考柱狀圖 -->
+        <div class="flex flex-col gap-6">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+            <h3 class="font-bold text-xs text-slate-700 mb-1 flex items-center gap-2">
+              <i class="fa-solid fa-stairs text-purple-600"></i> CCC 信賴等級 (Level 1-5)
+            </h3>
+            <div class="h-28 relative">
+              <canvas id="cccChart"></canvas>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-500 mt-2 text-center">
-            階段審查信賴等級 (目標 M21 達 Level 4)
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-square-poll-vertical text-teal-600"></i> 技術考與報告成績 (80-100分)
-          </h3>
-          <div class="h-60 relative">
-            <canvas id="techChart"></canvas>
-          </div>
-          <div class="text-[11px] text-slate-500 mt-2 text-center">
-            技術考 & 學術報告 (通過標準 &ge; 80分)
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-chart-line text-indigo-600"></i> Mini-CEX 得分趨勢圖 (1-9分)
-          </h3>
-          <div class="h-60 relative">
-            <canvas id="miniCexChart"></canvas>
-          </div>
-          <div class="text-[11px] text-slate-500 mt-2 text-center">
-            每 3 個月評量 1 次 (分數範圍 1-9 分)
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-chart-column text-amber-600"></i> CbD 病例討論成績 (60-100分)
-          </h3>
-          <div class="h-60 relative">
-            <canvas id="cbdChart"></canvas>
-          </div>
-          <div class="text-[11px] text-slate-500 mt-2 text-center">
-            每 3 個月評量 1 次 (分數範圍 60-100 分)
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+            <h3 class="font-bold text-xs text-slate-700 mb-1 flex items-center gap-2">
+              <i class="fa-solid fa-square-poll-vertical text-teal-600"></i> 技術考與報告成績 (80-100分)
+            </h3>
+            <div class="h-28 relative">
+              <canvas id="techChart"></canvas>
+            </div>
           </div>
         </div>
 
       </div>
+
+      <!-- 次要趨勢圖 (Mini-CEX 與 CbD) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-indigo-600"></i> Mini-CEX 得分趨勢圖 (1-9分)
+          </h3>
+          <div class="h-48 relative">
+            <canvas id="miniCexChart"></canvas>
+          </div>
+        </div>
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-chart-column text-amber-600"></i> CbD 病例討論成績 (60-100分)
+          </h3>
+          <div class="h-48 relative">
+            <canvas id="cbdChart"></canvas>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- 下方集點區域：三階段由左而右 3 欄式 Grid 佈局 -->
@@ -276,14 +270,15 @@
             </div>
 
             <div>
-              <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第一階段技術考與報告 (6項)</h4>
+              <h4 class="font-semibold text-xs text-slate-500 uppercase mb-2">🔴 第一階段技術考與報告 (7項)</h4>
               <div class="grid grid-cols-2 gap-1.5">
                 <button data-id="t1" data-name="管路更換" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">管路更換</button>
                 <button data-id="t2" data-name="肺功能測量" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">肺功能測量</button>
                 <button data-id="t3" data-name="氣囊漏氣測試" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">氣囊漏氣測試</button>
                 <button data-id="t4" data-name="呼吸評估測量" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">呼吸評估測量</button>
                 <button data-id="t5" data-name="小量噴霧器" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">小量噴霧器</button>
-                <button data-id="t6" data-name="呼吸器裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">呼吸器裝置</button>
+                <button data-id="t6a" data-name="侵襲性呼吸器管路裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold">侵襲性管路裝置</button>
+                <button data-id="t6b" data-name="非侵襲性呼吸器管路裝置" class="stamp-btn is-core score-btn p-2 border border-slate-200 bg-slate-50 rounded-lg text-center text-xs font-bold col-span-2">非侵襲性管路裝置</button>
               </div>
             </div>
 
@@ -1019,10 +1014,10 @@
       charts.tech = new Chart(techCtx, {
         type: 'bar',
         data: {
-          labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11'],
+          labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6a', 'T6b', 'T7', 'T8', 'T9', 'T10', 'T11'],
           datasets: [{
             label: '技術考分數',
-            data: Array(11).fill(0),
+            data: Array(12).fill(0),
             backgroundColor: '#0d9488'
           }]
         },
@@ -1124,7 +1119,7 @@
         charts.ccc.update();
       }
 
-      const techKeys = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10', 't11'];
+      const techKeys = ['t1', 't2', 't3', 't4', 't5', 't6a', 't6b', 't7', 't8', 't9', 't10', 't11'];
       if (charts.tech) {
         charts.tech.data.datasets[0].data = techKeys.map(k => parseFloat(localScores[k]) || 0);
         charts.tech.update();
