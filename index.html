@@ -43,7 +43,7 @@
     .sub-stamp-btn.completed {
       background-color: #10b981 !important;
       color: white !important;
-      border-color: #059669 !important;
+      border-color: #047857 !important;
     }
     
     input[type="date"]::-webkit-calendar-picker-indicator {
@@ -134,14 +134,23 @@
         </div>
 
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <h3 class="font-bold text-sm text-slate-700 mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
-          </h3>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-bold text-sm text-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-compass text-emerald-600"></i> SIRIPPP 七軸能力年輪圖
+            </h3>
+            <!-- SIRIPPP 年輪圖上方的 M3、M9、M15、M21 切換選項按鈕 -->
+            <div class="flex gap-1">
+              <button id="btn_siri_m3" onclick="switchSiriMonth('m3')" class="px-2 py-0.5 text-xs font-bold bg-sky-600 text-white rounded shadow-sm transition">M3</button>
+              <button id="btn_siri_m9" onclick="switchSiriMonth('m9')" class="px-2 py-0.5 text-xs font-bold bg-white text-slate-700 rounded shadow-sm transition">M9</button>
+              <button id="btn_siri_m15" onclick="switchSiriMonth('m15')" class="px-2 py-0.5 text-xs font-bold bg-white text-slate-700 rounded shadow-sm transition">M15</button>
+              <button id="btn_siri_m21" onclick="switchSiriMonth('m21')" class="px-2 py-0.5 text-xs font-bold bg-white text-slate-700 rounded shadow-sm transition">M21</button>
+            </div>
+          </div>
           <div class="h-60 relative">
             <canvas id="siripppRadarChart"></canvas>
           </div>
           <div class="text-[11px] text-slate-500 mt-2 text-center">
-            S-I-R-I-P-P-P 四次審查演進 (🔵 M3 / 🟢 M9 / 🟠 M15 / 🟣 M21)
+            S-I-R-I-P-P-P 演進 (🔵 自評 / 🟢 導師1 / 🟠 導師2 / 🟣 導師3 / 🔴 導師4)
           </div>
         </div>
 
@@ -326,16 +335,50 @@
                 </div>
               </div>
 
+              <!-- M3 臨床導師評分 (4位導師) -->
               <div class="space-y-1 pt-1">
-                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M3 核心能力-臨床導師評分 (1-5分)：</span>
-                <div class="flex items-center gap-1 text-xs">
-                  <button data-id="m1_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="m1_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="m1_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M3 核心能力-臨床導師評分 (4位導師)：</span>
+                <div class="space-y-1">
+                  <div class="text-[10px] text-slate-500">導師 1：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m1_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m1_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m1_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 2：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m2_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m2_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m2_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 3：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m3_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m3_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m3_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 4：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m4_siri_m3_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m4_siri_m3_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m3_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m4_siri_m3_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m3_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m3_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m3_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
                 </div>
               </div>
 
@@ -473,7 +516,7 @@
                 <div class="flex flex-wrap gap-1 text-xs">
                   <button data-id="cbd_m6" data-name="M6" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M6</button>
                   <button data-id="cbd_m9" data-name="M9" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M9</button>
-                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
+                  <button data-id="cbd_m12" data-name="M12" class="stamp-btn cbd-btn px-2.5 py-0.5 border rounded bg-amber-50/50 text-amber-800 text-[11px] font-bold">M12</button>
                 </div>
               </div>
 
@@ -497,16 +540,50 @@
                 </div>
               </div>
 
+              <!-- M9 臨床導師評分 (4位導師) -->
               <div class="space-y-1 pt-1">
-                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M9 核心能力-臨床導師評分 (1-5分)：</span>
-                <div class="flex items-center gap-1 text-xs">
-                  <button data-id="m1_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="m1_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="m1_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M9 核心能力-臨床導師評分 (4位導師)：</span>
+                <div class="space-y-1">
+                  <div class="text-[10px] text-slate-500">導師 1：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m1_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m1_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m1_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 2：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m2_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m2_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m2_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 3：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m3_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m3_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m3_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 4：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m4_siri_m9_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m4_siri_m9_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m9_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m4_siri_m9_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m9_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m9_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m9_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
                 </div>
               </div>
 
@@ -640,6 +717,7 @@
                 </div>
               </div>
 
+              <!-- M15 SIRIPPP 自評與 4位導師評分 -->
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M15 核心能力自評：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -652,20 +730,53 @@
                   <button data-id="siri_m15_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
-                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M15 核心能力-臨床導師評分 (1-5分)：</span>
-                <div class="flex items-center gap-1 text-xs">
-                  <button data-id="m1_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="m1_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="m1_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M15 核心能力-臨床導師評分 (4位導師)：</span>
+                <div class="space-y-1">
+                  <div class="text-[10px] text-slate-500">導師 1：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m1_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m1_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m1_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 2：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m2_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m2_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m2_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 3：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m3_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m3_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m3_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 4：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m4_siri_m15_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m4_siri_m15_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m15_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m4_siri_m15_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m15_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m15_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m15_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
                 </div>
               </div>
 
+              <!-- M21 SIRIPPP 自評與 4位導師評分 -->
               <div class="space-y-1 pt-1">
                 <span class="text-[11px] font-semibold text-emerald-700">SIRIPPP M21 核心能力自評：</span>
                 <div class="flex items-center gap-1 text-xs">
@@ -678,17 +789,49 @@
                   <button data-id="siri_m21_p3" data-name="P" class="sub-stamp-btn siri-btn">P</button>
                 </div>
               </div>
-
               <div class="space-y-1 pt-1">
-                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M21 核心能力-臨床導師評分 (1-5分)：</span>
-                <div class="flex items-center gap-1 text-xs">
-                  <button data-id="m1_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
-                  <button data-id="m1_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
-                  <button data-id="m1_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
-                  <button data-id="m1_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
-                  <button data-id="m1_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                <span class="text-[11px] font-semibold text-emerald-800">SIRIPPP M21 核心能力-臨床導師評分 (4位導師)：</span>
+                <div class="space-y-1">
+                  <div class="text-[10px] text-slate-500">導師 1：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m1_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m1_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m1_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m1_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m1_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 2：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m2_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m2_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m2_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m2_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m2_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 3：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m3_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m3_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m3_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m3_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m3_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
+                  <div class="text-[10px] text-slate-500">導師 4：</div>
+                  <div class="flex items-center gap-1 text-xs">
+                    <button data-id="m4_siri_m21_s" data-name="S" class="sub-stamp-btn siri-mentor-btn">S</button>
+                    <button data-id="m4_siri_m21_i1" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m21_r" data-name="R" class="sub-stamp-btn siri-mentor-btn">R</button>
+                    <button data-id="m4_siri_m21_i2" data-name="I" class="sub-stamp-btn siri-mentor-btn">I</button>
+                    <button data-id="m4_siri_m21_p1" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m21_p2" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                    <button data-id="m4_siri_m21_p3" data-name="P" class="sub-stamp-btn siri-mentor-btn">P</button>
+                  </div>
                 </div>
               </div>
 
@@ -722,7 +865,7 @@
         </div>
         <div class="bg-white p-3 rounded-xl border border-emerald-100 shadow-sm">
           <strong class="text-emerald-800 block mb-1">📌 人文素養與全人照護</strong>
-          • 第一年 ≥ 12h / 第二年 ≥ 6h (含人安、倫理、感染管制、高齡等)
+          • 第一年 &ge; 12h / 第二年 &ge; 6h (含人安、倫理、感染管制、高齡等)
         </div>
       </div>
     </div>
@@ -839,10 +982,13 @@
           labels: ['S (體系)', 'I (人際)', 'R (實證)', 'I (跨領域)', 'P (專業)', 'P (照護)', 'P (發展)'],
           datasets: [
             { label: 'PGY 自評分數', data: Array(7).fill(0), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)' },
-            { label: '臨床導師評分', data: Array(7).fill(0), borderColor: '#f97316', backgroundColor: 'rgba(249, 115, 22, 0.2)' }
+            { label: '導師 1 評分', data: Array(7).fill(0), borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.2)' },
+            { label: '導師 2 評分', data: Array(7).fill(0), borderColor: '#f97316', backgroundColor: 'rgba(249, 115, 22, 0.2)' },
+            { label: '導師 3 評分', data: Array(7).fill(0), borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.2)' },
+            { label: '導師 4 評分', data: Array(7).fill(0), borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.2)' }
           ]
         },
-        options: { responsive: true, maintainAspectRatio: false, scales: { r: { min: 0, max: 5, ticks: { stepSize: 0.5 } } } }
+        options: { responsive: true, maintainAspectRatio: false, scales: { r: { min: 0, max: 5, ticks: { stepSize: 1 } } } }
       });
 
       // 3. CCC 階梯圖
@@ -931,9 +1077,6 @@
       });
     }
 
-    // =========================================================================
-    // 【核心唯一規則】：EPA 雷達圖採用「最新一次有效評分」 (3 > 2 > 1 > 0)
-    // =========================================================================
     function updateCharts() {
       const mapEpaLevelToNum = (val) => {
         if (!val) return 0;
@@ -954,55 +1097,45 @@
           const rec = localScores[`${prefix}_${i}`];
           if (rec !== undefined && rec !== null && String(rec).trim() !== "") {
             const converted = mapEpaLevelToNum(rec);
-            if (converted > 0) {
-              return converted;
-            }
+            if (converted > 0) return converted;
           }
         }
         return 0;
       };
 
       if (charts.epa) {
-        // Stage 1: EPA 1, 5, 6
         const stage1Data = ['epa1', 'epa5', 'epa6'].map(prefix => getLatestValidEpaScore(prefix));
         charts.epa.data.datasets[0].data = [stage1Data[0], 0, stage1Data[1], stage1Data[2], 0, 0, 0, 0, 0];
 
-        // Stage 2: EPA 3, 8, 9, 10, 11
         const stage2Data = ['epa3', 'epa8', 'epa9', 'epa10', 'epa11'].map(prefix => getLatestValidEpaScore(prefix));
         charts.epa.data.datasets[1].data = [0, stage2Data[0], 0, 0, 0, stage2Data[1], stage2Data[2], stage2Data[3], stage2Data[4]];
 
-        // Stage 3: EPA 7
         const stage3Data = ['epa7'].map(prefix => getLatestValidEpaScore(prefix));
         charts.epa.data.datasets[2].data = [0, 0, 0, 0, stage3Data[0], 0, 0, 0, 0];
 
         charts.epa.update();
       }
 
-      // SIRIPPP 年輪圖更新
       updateSiriRadar(currentSiriMonth);
 
-      // CCC 階梯圖
       const cccMonths = ['m3', 'm9', 'm15', 'm21'];
       if (charts.ccc) {
         charts.ccc.data.datasets[0].data = cccMonths.map(m => parseFloat(localScores[`ccc_${m}`]) || 0);
         charts.ccc.update();
       }
 
-      // 技術考柱狀圖
       const techKeys = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10', 't11'];
       if (charts.tech) {
         charts.tech.data.datasets[0].data = techKeys.map(k => parseFloat(localScores[k]) || 0);
         charts.tech.update();
       }
 
-      // Mini-CEX
       const minicexMonths = ['m3', 'm6', 'm9', 'm12', 'm15', 'm18', 'm21', 'm24'];
       if (charts.minicex) {
         charts.minicex.data.datasets[0].data = minicexMonths.map(m => parseFloat(localScores[`minicex_${m}`]) || null);
         charts.minicex.update();
       }
 
-      // CbD
       if (charts.cbd) {
         charts.cbd.data.datasets[0].data = minicexMonths.map(m => parseFloat(localScores[`cbd_${m}`]) || null);
         charts.cbd.update();
@@ -1027,11 +1160,17 @@
     function updateSiriRadar(month) {
       const siriAspects = ['s', 'i1', 'r', 'i2', 'p1', 'p2', 'p3'];
       const selfData = siriAspects.map(a => parseFloat(localScores[`siri_${month}_${a}`]) || 0);
-      const mentorData = siriAspects.map(a => parseFloat(localScores[`m1_siri_${month}_${a}`]) || 0);
+      const m1Data = siriAspects.map(a => parseFloat(localScores[`m1_siri_${month}_${a}`]) || 0);
+      const m2Data = siriAspects.map(a => parseFloat(localScores[`m2_siri_${month}_${a}`]) || 0);
+      const m3Data = siriAspects.map(a => parseFloat(localScores[`m3_siri_${month}_${a}`]) || 0);
+      const m4Data = siriAspects.map(a => parseFloat(localScores[`m4_siri_${month}_${a}`]) || 0);
 
       if (charts.siri) {
         charts.siri.data.datasets[0].data = selfData;
-        charts.siri.data.datasets[1].data = mentorData;
+        charts.siri.data.datasets[1].data = m1Data;
+        charts.siri.data.datasets[2].data = m2Data;
+        charts.siri.data.datasets[3].data = m3Data;
+        charts.siri.data.datasets[4].data = m4Data;
         charts.siri.update();
       }
     }
@@ -1058,17 +1197,17 @@
           el.classList.add('completed');
           if (el.classList.contains('course-btn')) {
             const label = el.getAttribute('data-label');
-            el.innerHTML = `<span class="text-xs font-bold text-slate-700">${label}</span><span class="text-[#1e3a8a] font-bold text-xs">完成</span>`;
+            el.innerHTML = `<span class="text-xs font-bold text-slate-700">${label}</span><span class="text-white font-bold text-xs">完成</span>`;
           }
           else if (el.classList.contains('score-btn')) {
             const name = el.getAttribute('data-name');
-            el.innerHTML = `${name} <span class="text-[#1e3a8a] font-bold">(${val}分)</span>`;
+            el.innerHTML = `${name} <span class="text-white font-bold">(${val}分)</span>`;
           }
           else if (el.classList.contains('epa-btn') || el.classList.contains('ccc-btn') || 
                    el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn') || 
                    el.classList.contains('minicex-btn') || el.classList.contains('cbd-btn')) {
             const name = el.getAttribute('data-name');
-            el.innerText = `${name} (${val}分)`;
+            el.innerText = `${name} (${val})`;
           }
         } else {
           el.classList.remove('completed');
@@ -1163,8 +1302,16 @@
               else alert("請輸入 60 到 100 之間的分數");
             } else if (input === "") delete localScores[id];
           }
-          else if (el.classList.contains('ccc-btn') || el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
-            const input = prompt("請輸入評核分數 / Level (1 ~ 5 分)：", currentVal || "3");
+          else if (el.classList.contains('ccc-btn')) {
+            const input = prompt(`請輸入 ${el.getAttribute('data-name')} CCC 信賴等級分數 (1 ~ 5 分)：`, currentVal || "3");
+            if (input !== null && input.trim() !== "") {
+              const score = parseFloat(input.trim());
+              if (score >= 1 && score <= 5) localScores[id] = score;
+              else alert("請輸入 1 到 5 之間的分數");
+            } else if (input === "") delete localScores[id];
+          }
+          else if (el.classList.contains('siri-btn') || el.classList.contains('siri-mentor-btn')) {
+            const input = prompt("請輸入 SIRIPPP 評核分數 (1 ~ 5 分)：", currentVal || "3");
             if (input !== null && input.trim() !== "") {
               const score = parseFloat(input.trim());
               if (score >= 1 && score <= 5) localScores[id] = score;
